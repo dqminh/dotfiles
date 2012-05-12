@@ -36,9 +36,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export GOROOT=/usr/local/Cellar/go/1.0.1
 unsetopt correct_all
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=/usr/bin/vim
+export CC=/usr/bin/gcc-4.2
+export CPP=/usr/bin/cpp-4.2
+export CXX=/usr/bin/g++-4.2
+export NODE_PATH=/usr/local/lib/node_modules
+
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$GOROOT/bin

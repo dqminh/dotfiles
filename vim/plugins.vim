@@ -3,7 +3,6 @@ Bundle 'thisivan/vim-bufexplorer'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mileszs/ack.vim'
 Bundle 'chrismetcalf/vim-yankring'
-Bundle 'skalnik/vim-vroom'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Lokaltog/vim-easymotion'
@@ -28,11 +27,11 @@ Bundle 'kchmck/vim-coffee-script'
 " Colorschemes
 Bundle 'tomasr/molokai'
 Bundle 'jpo/vim-railscasts-theme'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-vividchalk'
 
 " For vim-snipmate
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "snipmate-snippets"
 Bundle "garbas/vim-snipmate"
-
-

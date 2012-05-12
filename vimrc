@@ -119,7 +119,7 @@ let NERDTreeChDirMode = 2
 
 " Theme
 set background=dark
-colorscheme molokai
+colorscheme vividchalk
 
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim
