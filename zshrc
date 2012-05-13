@@ -11,6 +11,7 @@ ZSH_THEME="steeef"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias rake="noglob rake"
+alias vim="mvim -v"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"

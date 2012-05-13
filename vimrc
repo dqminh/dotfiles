@@ -57,6 +57,7 @@ if has("folding")
   set foldmethod=syntax
   set foldlevel=1
   set foldnestmax=2
+  set foldlevelstart=20
   set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
 endif
 
@@ -119,7 +120,7 @@ let NERDTreeChDirMode = 2
 
 " Theme
 set background=dark
-colorscheme vividchalk
+colorscheme molokai
 
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim

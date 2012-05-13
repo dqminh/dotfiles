@@ -17,6 +17,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
+Bundle 'cloud8421/vimux-cucumber'
+Bundle 'benmills/vimux'
+Bundle 'pgr0ss/vimux-ruby-test'
 
 " Filetypes
 Bundle 'tpope/vim-markdown'

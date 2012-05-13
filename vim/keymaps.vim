@@ -46,15 +46,12 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 " NERDTree
 nnoremap <silent><F1> :NERDTreeToggle<CR>
 
-" CtrlP
-map <leader>t :CtrlP<CR>
-
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 
 " Ack
-map <leader>f :Ack<space>
+map <leader>a :Ack<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
@@ -71,13 +68,20 @@ if exists(":Tabularize")
   noremap :T :Tabularize /}}
 endif
 
-" Unimpaired configuration
 " Bubble single lines
-nmap <C-1> [e
-nmap <C-2> ]e
+"nmap <C-S-q> [e
+"nmap <C-S-w> ]e
 " Bubble multiple lines
-vmap <C-1> [egv
-vmap <C-2> ]egv
+"vmap <C-S-q> [egv
+"vmap <C-S-w> ]egv
 
 " Insert hashrocket
 imap <C-L> <Space>=><Space>
+
+" If in tmux, run test with style
+if exists('$TMUX')
+  autocmd FileType ruby map <buffer> <leader>r :RunRubyFocusedTest<CR>
+  autocmd FileType ruby map <buffer> <leader>R :RunAllRubyTests<CR>
+  autocmd FileType cucumber map <leader>r :RunFocusedCuke<CR>
+  autocmd FileType cucumber map <leader>R :RunAllCukes<CR>
+endif
