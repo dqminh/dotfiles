@@ -12,6 +12,8 @@ ZSH_THEME="steeef"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias rake="noglob rake"
 alias vim="mvim -v"
+alias nmux="tmux new -s"
+alias mux="tmux attach -t"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -37,6 +39,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+
+# load rvmrc
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# load tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
 export GOROOT=/usr/local/Cellar/go/1.0.1
 unsetopt correct_all
 export LC_CTYPE=en_US.UTF-8
@@ -49,3 +59,6 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:$GOROOT/bin
+
+# forcefully load rvmrc by cd into current directory. RVM bad bad
+cd .

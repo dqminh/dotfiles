@@ -25,6 +25,9 @@ syntax on
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Use system clipboard
+set clipboard=unnamed
+
 set number                     " Show line number
 set ruler                      " Show ruler
 set encoding=utf-8             " Enable utf-8 encoding by default
@@ -120,7 +123,7 @@ let NERDTreeChDirMode = 2
 
 " Theme
 set background=dark
-colorscheme molokai
+colorscheme vividchalk
 
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim
