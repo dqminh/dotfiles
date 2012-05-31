@@ -1,4 +1,3 @@
-Bundle 'ervandew/supertab'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mileszs/ack.vim'
@@ -20,6 +19,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'cloud8421/vimux-cucumber'
 Bundle 'benmills/vimux'
 Bundle 'pgr0ss/vimux-ruby-test'
+Bundle 'Shougo/neocomplcache'
 
 " Filetypes
 Bundle 'tpope/vim-markdown'
@@ -32,6 +32,10 @@ Bundle 'tomasr/molokai'
 Bundle 'jpo/vim-railscasts-theme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-vividchalk'
+Bundle 'noahfrederick/Hemisu'
+Bundle 'binarypie/blueberrypie-vim'
+Bundle 'sjl/badwolf'
+Bundle 'nanotech/jellybeans.vim'
 
 " For vim-snipmate
 Bundle "MarcWeber/vim-addon-mw-utils"

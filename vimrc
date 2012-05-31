@@ -29,7 +29,6 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 
 set number                     " Show line number
-set ruler                      " Show ruler
 set encoding=utf-8             " Enable utf-8 encoding by default
 set nobackup                   " Disable backup file
 set nowritebackup
@@ -72,16 +71,28 @@ set shiftwidth=2
 set expandtab
 
 " Status bar
-set showcmd
 set modelines=0
-set laststatus=2
 set showmode
 set showmatch
 set gdefault
 set cursorline
 set hidden
 set scrolloff=5     " keep 5 lines when scrolling
-set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)"
+
+set laststatus=2
+" Broken down into easily includeable segments
+set statusline=%<%f\    " Filename
+set statusline+=%w%h%m%r " Options
+set statusline+=%{fugitive#statusline()} "  Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " filetype
+set statusline+=\ [%{getcwd()}]          " current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+
+if has('cmdline_info')
+  set ruler                   " show the ruler
+  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+  set showcmd                 " show partial commands in status line and selected characters/lines in visual mode
+endif
 
 set shortmess=atI   " Abbreviate messages
 set fo=tcrqo " t autowraps text using textwidth
@@ -121,9 +132,28 @@ let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$', '\docs' , '\htmlcov']
 let NERDTreeHighlightCursorline=1
 let NERDTreeChDirMode = 2
 
+" Neocompletion
+" disable AutoCompletePop behavior
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
 " Theme
 set background=dark
-colorscheme vividchalk
+colorscheme jellybeans
 
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim

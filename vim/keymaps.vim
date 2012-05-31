@@ -1,3 +1,14 @@
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
@@ -47,7 +58,6 @@ inoremap <silent> <F3> <ESC>:YRShow<cr>
 nnoremap <silent><F1> :NERDTreeToggle<CR>
 
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 
 " Ack
@@ -56,7 +66,7 @@ map <leader>a :Ack<space>
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
 
-" EasyMotion
+" Insert hashrocket
 let g:EasyMotion_leader_key = '<Leader>m'
 
 " Tabular
@@ -67,13 +77,6 @@ if exists(":Tabularize")
   noremap :A{ :Tabularize /{
   noremap :T :Tabularize /}}
 endif
-
-" Bubble single lines
-"nmap <C-S-q> [e
-"nmap <C-S-w> ]e
-" Bubble multiple lines
-"vmap <C-S-q> [egv
-"vmap <C-S-w> ]egv
 
 " Insert hashrocket
 imap <C-L> <Space>=><Space>
