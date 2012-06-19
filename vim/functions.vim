@@ -1,18 +1,4 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GENERATE TAGS FILE FOR EVERYTHING
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! GenerateTagFile()
-  exec "ctags -R"
-  if executable("jsctags")
-    exec "jsctags"
-  endif
-  if executable("coffeetags")
-    exec "coffeetags -R"
-  endif
-endfunction
-map <Leader>rt :call GenerateTagFile()<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! RenameFile()

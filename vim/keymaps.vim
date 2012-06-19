@@ -1,13 +1,4 @@
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+map <f12> :set paste<CR>
 
 " Edit routes
 command! Rroutes :e config/routes.rb
@@ -83,8 +74,6 @@ imap <C-L> <Space>=><Space>
 
 " If in tmux, run test with style
 if exists('$TMUX')
-  autocmd FileType ruby map <buffer> <leader>r :RunRubyFocusedTest<CR>
-  autocmd FileType ruby map <buffer> <leader>R :RunAllRubyTests<CR>
-  autocmd FileType cucumber map <leader>r :RunFocusedCuke<CR>
-  autocmd FileType cucumber map <leader>R :RunAllCukes<CR>
+  au BufNewFile,BufRead *spec.rb map <buffer> <leader>r :RunRubyFocusedTest<CR>
+  au BufNewFile,BufRead *spec.rb map <buffer> <leader>R :RunLastVimTmuxCommand<CR>
 endif

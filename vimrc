@@ -37,7 +37,7 @@ set undofile                   " Enable undofile
 set undodir=/tmp               " Set the undo destination to tmp
 set undolevels=700             " Set how many undo vim has to remember
 set autoread                   " Set autoread when a file is changed from outside
-set history=1000 	             " Sets how many lines of history vim has to remember
+set history=1000               " Sets how many lines of history vim has to remember
 set so=7                       " Set 7 lines to the cursor when moving vertical
 set textwidth=79               " Default maximum textwidth is 79
 set colorcolumn=80,120         " Highlight column 80 and 120 to remind us that we should open a new line
@@ -53,15 +53,6 @@ nnoremap <CR> :noh<CR><CR>
 
 set nowrap " Switch wrap off for everything
 set autoindent		" always set autoindenting on
-
-if has("folding")
-  set foldenable
-  set foldmethod=syntax
-  set foldlevel=1
-  set foldnestmax=2
-  set foldlevelstart=20
-  set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
-endif
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -124,34 +115,16 @@ autocmd BufReadPost *
       \   exe "normal g`\"" |
       \ endif
 
-" Automatically load .vimrc source when saved
-autocmd BufWritePost .vimrc source $MYVIMRC
-
 " NERDTree
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$', '\docs' , '\htmlcov']
 let NERDTreeHighlightCursorline=1
 let NERDTreeChDirMode = 2
 
-" Neocompletion
-" disable AutoCompletePop behavior
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+" SuperTab
+let g:SuperTabCrMapping=0
 
 " Theme
+set ttyfast
 set background=dark
 colorscheme jellybeans
 

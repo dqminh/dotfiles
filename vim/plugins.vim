@@ -16,29 +16,15 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
-Bundle 'cloud8421/vimux-cucumber'
 Bundle 'benmills/vimux'
 Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'Shougo/neocomplcache'
+Bundle 'ervandew/supertab'
 
 " Filetypes
 Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 
 " Colorschemes
 Bundle 'tomasr/molokai'
-Bundle 'jpo/vim-railscasts-theme'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'noahfrederick/Hemisu'
-Bundle 'binarypie/blueberrypie-vim'
-Bundle 'sjl/badwolf'
 Bundle 'nanotech/jellybeans.vim'
-
-" For vim-snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "snipmate-snippets"
-Bundle "garbas/vim-snipmate"
