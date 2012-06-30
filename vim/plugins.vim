@@ -19,6 +19,8 @@ Bundle 'tpope/vim-endwise'
 Bundle 'benmills/vimux'
 Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'ervandew/supertab'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'vim-scripts/VimClojure'
 
 " Filetypes
 Bundle 'tpope/vim-markdown'

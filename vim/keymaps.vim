@@ -62,10 +62,10 @@ let g:EasyMotion_leader_key = '<Leader>m'
 
 " Tabular
 if exists(":Tabularize")
-  noremap :A= :Tabularize /=
-  noremap :A> :Tabularize /=>
-  noremap :A: :Tabularize /:
-  noremap :A{ :Tabularize /{
+  noremap :T= :Tabularize /=
+  noremap :T> :Tabularize /=>
+  noremap :T: :Tabularize /:
+  noremap :T{ :Tabularize /{
   noremap :T :Tabularize /}}
 endif
 
@@ -75,5 +75,5 @@ imap <C-L> <Space>=><Space>
 " If in tmux, run test with style
 if exists('$TMUX')
   au BufNewFile,BufRead *spec.rb map <buffer> <leader>r :RunRubyFocusedTest<CR>
-  au BufNewFile,BufRead *spec.rb map <buffer> <leader>R :RunLastVimTmuxCommand<CR>
+  au BufNewFile,BufRead *.rb map <buffer> <leader>R :RunLastVimTmuxCommand<CR>
 endif

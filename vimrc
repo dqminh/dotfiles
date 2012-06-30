@@ -123,6 +123,12 @@ let NERDTreeChDirMode = 2
 " SuperTab
 let g:SuperTabCrMapping=0
 
+" Indent guide
+let g:indent_guides_enable_on_vim_startup = 1
+
+" Clojure
+let vimclojure#HighlightBuiltins=1
+
 " Theme
 set ttyfast
 set background=dark
