@@ -72,6 +72,9 @@ endif
 " Insert hashrocket
 imap <C-L> <Space>=><Space>
 
+" CtrlP
+map <leader>t :CtrlP<CR>
+
 " If in tmux, run test with style
 if exists('$TMUX')
   au BufNewFile,BufRead *spec.rb map <buffer> <leader>r :RunRubyFocusedTest<CR>

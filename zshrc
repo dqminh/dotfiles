@@ -25,6 +25,8 @@ export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:$GOROOT/bin
 export PATH=/usr/local/Cellar/python/2.7.3/bin:$PATH
 export PATH=/usr/local/share/python:$PATH
+
+export GOPATH=$HOME/gocode
 export PYTHONPATH=/usr/local/Cellar/python/2.7.3
 export LD_LIBRARY_PATH=/usr/local/Cellar/python/2.7.3/lib:/usr/local/Cellar/python/2.7.3:$LD_LIBRARY_PATH
 export LINKFLAGS='-search_dylibs_first -L /usr/local/Cellar/python/2.7.3/lib/'
