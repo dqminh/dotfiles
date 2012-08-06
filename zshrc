@@ -75,6 +75,12 @@ export JAVA_HOME="$(/usr/libexec/java_home)"
 export JRUBY_OPTS='--1.9'
 export RLWRAP=`which rlwrap`
 
+export S3_ACCESS_KEY_ID=AKIAIFXURYRHOOPRAHZQ
+export S3_SECRET_ACCESS_KEY=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
+export S3_BUCKET=assets.viki-staging
+export RUBYMINE_HOME=/Applications/RubyMine.app/
+export TRACKER_TOKEN=ecfb03528d22aaf27d487c21d728e131
+
 # Stop autocorrect
 unsetopt correct_all
 
