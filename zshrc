@@ -1,5 +1,52 @@
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="steeef"
+#
+# Sets Oh My Zsh options.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':omz:module:editor' keymap 'emacs'
+
+# Auto convert .... to ../..
+zstyle ':omz:module:editor' dot-expansion 'no'
+
+# Set case-sensitivity for completion, history lookup, etc.
+zstyle ':omz:*:*' case-sensitive 'no'
+
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':omz:*:*' color 'yes'
+
+# Auto set the tab and window titles.
+zstyle ':omz:module:terminal' auto-title 'yes'
+
+# Set the Zsh modules to load (man zshmodules).
+# zstyle ':omz:load' zmodule 'attr' 'stat'
+
+# Set the Zsh functions to load (man zshcontrib).
+# zstyle ':omz:load' zfunction 'zargs' 'zmv'
+
+# Set the Oh My Zsh modules to load (browse modules).
+# The order matters.
+zstyle ':omz:load' omodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'history-substring-search' \
+  'prompt'
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+zstyle ':omz:module:prompt' theme 'steeef'
+
+# This will make you shout: OH MY ZSHELL!
+source "$OMZ/init.zsh"
 
 # ALIAS
 alias rake="noglob rake"
@@ -8,13 +55,7 @@ alias gl="git log --pretty=format:'%h - %an, %ar : %s'"
 alias fspec="rspec --no-drb"
 alias reloadrvm="source .rvmrc"
 
-DISABLE_AUTO_TITLE="true"
-plugins=(history-search-substring encode64)
-
-source $ZSH/oh-my-zsh.sh
-
 # Customize to your needs...
-export EDITOR=vim
 export GOROOT=/usr/local/Cellar/go/1.0.1
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -23,24 +64,14 @@ export LC_ALL=en_US.UTF-8
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:$GOROOT/bin
-export PATH=/usr/local/Cellar/python/2.7.3/bin:$PATH
-export PATH=/usr/local/share/python:$PATH
 
 export GOPATH=$HOME/gocode
-export PYTHONPATH=/usr/local/Cellar/python/2.7.3
-export LD_LIBRARY_PATH=/usr/local/Cellar/python/2.7.3/lib:/usr/local/Cellar/python/2.7.3:$LD_LIBRARY_PATH
-export LINKFLAGS='-search_dylibs_first -L /usr/local/Cellar/python/2.7.3/lib/'
-export PKG_CONFIG_PATH=/usr/local/Cellar/cairo/1.10.2/lib/pkgconfig
-export CC=/usr/bin/gcc-4.2
-export CPP=/usr/bin/cpp-4.2
-export CXX=/usr/bin/g++-4.2
+export CC=/usr/local/bin/gcc-4.2
+export CPPFLAGS="-I/opt/X11/include"
+export CFLAGS="-I/opt/X11/include"
 export NODE_PATH=/usr/local/lib/node_modules
-export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
-#export EC2_PRIVATE_KEY="$(/bin/ls $HOME/.ec2/pk-*.pem)"
-#export EC2_CERT="$(/bin/ls $HOME/.ec2/cert-*.pem)"
-#export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.5.2.5/jars"
 export JRUBY_OPTS='--1.9'
 export RLWRAP=`which rlwrap`
 
