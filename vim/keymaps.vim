@@ -1,3 +1,4 @@
+set pastetoggle=<F3>
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
