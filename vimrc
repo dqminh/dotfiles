@@ -98,7 +98,7 @@ set list listchars=tab:»·,trail:·
 " Turn on wildmenu
 set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,*.pyc,.svn,vendor/gems/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,*.pyc,.svn,vendor/gems/*
 
 " Numbers
 set number
@@ -128,6 +128,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 " Clojure
 let vimclojure#HighlightBuiltins=1
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 " Theme
 set ttyfast
