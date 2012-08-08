@@ -1,5 +1,3 @@
-map <f12> :set paste<CR>
-
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
@@ -7,9 +5,6 @@ command! Rschema :e db/schema.rb
 " Press Shift+P while in visual mode to replace the selection without
 " overwriting the default register
 vmap P p :call setreg('"', getreg('0')) <CR>
-
-" No Help, please
-nmap <F1> <Esc>
 
 " Duplicate a selection
 " Visual mode: D
@@ -46,7 +41,7 @@ nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
 " NERDTree
-nnoremap <silent><F1> :NERDTreeToggle<CR>
+nnoremap <silent><leader>nt :NERDTreeToggle<CR>
 
 " CTags
 map <C-\> :tnext<CR>
