@@ -13,7 +13,7 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-if filereadable(expand("~/.vim/filetypes.vim"))
+if filereadable(expand("~/.vim/plugins.vim"))
   source ~/.vim/plugins.vim
 endif
 
@@ -76,7 +76,7 @@ set statusline=%<%f\    " Filename
 set statusline+=%w%h%m%r " Options
 set statusline+=%{fugitive#statusline()} "  Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " filetype
-set statusline+=\ [%{getcwd()}]          " current dir
+set statusline+=\ [%F]          " current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 if has('cmdline_info')
@@ -144,6 +144,10 @@ endif
 
 if filereadable(expand("~/.vim/keymaps.vim"))
   source ~/.vim/keymaps.vim
+endif
+
+if filereadable(expand("~/.vim/functions.vim"))
+  source ~/.vim/functions.vim
 endif
 
 if filereadable(expand("~/.vimrc.local"))

@@ -10,7 +10,6 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <leader>n :call RenameFile()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
@@ -23,7 +22,6 @@ function! PromoteToLet()
   :normal ==
 endfunction
 :command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EXTRACT VARIABLE (SKETCHY)
@@ -44,7 +42,6 @@ function! ExtractVariable()
   " Paste the original selected text to be the variable value
   normal! $p
 endfunction
-vnoremap <leader>rv :call ExtractVariable()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INLINE VARIABLE (SKETCHY)
@@ -71,4 +68,58 @@ function! InlineVariable()
   :let @a = l:tmp_a
   :let @b = l:tmp_b
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>l :call RunTestFile()<CR>
+map <leader>L :call RunNearestTest()<CR>
+
+function! RunTestFile(...)
+    if a:0
+	let command_suffix = a:1
+    else
+	let command_suffix = ""
+    endif
+
+    " Run the tests for the previously-marked file.
+    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+    if in_test_file
+	call SetTestFile()
+    elseif !exists("t:grb_test_file")
+	return
+    end
+    call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+    let spec_line_number = line('.')
+    call RunTestFile(":" . spec_line_number . " -b")
+endfunction
+
+function! SetTestFile()
+    " Set the spec file that tests will be run for.
+    let t:grb_test_file=@%
+endfunction
+
+function! RunTests(filename)
+    " Write the file and run tests for the given filename
+    :w
+    if match(a:filename, '\.feature$') != -1
+	exec ":!script/features " . a:filename
+    else
+	if filereadable("script/test")
+	    exec ":!script/test " . a:filename
+	elseif filereadable("Gemfile")
+	    exec ":!bundle exec rspec --color " . a:filename
+	else
+	    exec ":!rspec --color " . a:filename
+	end
+    end
+endfunction
+
+" Key bindings
+map <leader>p :PromoteToLet<cr>
+map <leader>n :call RenameFile()<cr>
+vnoremap <leader>rv :call ExtractVariable()<cr>
 nnoremap <leader>ri :call InlineVariable()<cr>
