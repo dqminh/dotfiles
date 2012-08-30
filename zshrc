@@ -43,7 +43,7 @@ zstyle ':omz:load' omodule \
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':omz:module:prompt' theme 'steeef'
+zstyle ':omz:module:prompt' theme 'sorin'
 
 # This will make you shout: OH MY ZSHELL!
 source "$OMZ/init.zsh"
@@ -54,11 +54,13 @@ alias vim="mvim -v"
 alias gl="git log --pretty=format:'%h - %an, %ar : %s'"
 alias fspec="rspec --no-drb"
 alias reloadrvm="source .rvmrc"
+alias gg='git pr && git pom'
 
 # Customize to your needs...
 export GOROOT=/usr/local/Cellar/go/1.0.1
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export EDITOR=vim
 
 # PATHS
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
@@ -83,9 +85,3 @@ export TRACKER_TOKEN=ecfb03528d22aaf27d487c21d728e131
 
 # Stop autocorrect
 unsetopt correct_all
-
-# load rvmrc
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# load tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
