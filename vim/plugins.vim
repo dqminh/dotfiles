@@ -18,11 +18,13 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'vim-scripts/YankRing.vim'
+Bundle 'iandoe/vim-osx-colorpicker'
+Bundle 'skammer/vim-css-color'
+
+" Languages
 Bundle 'vim-scripts/VimClojure'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'vim-scripts/YankRing.vim'
-
-" Filetypes
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
