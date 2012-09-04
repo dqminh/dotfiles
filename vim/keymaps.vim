@@ -48,7 +48,7 @@ nnoremap <silent><leader>nt :NERDTreeToggle<CR>
 map <C-\> :tnext<CR>
 
 " Ack
-map <leader>a :Ack<space>
+map <leader>a :Ack!<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
