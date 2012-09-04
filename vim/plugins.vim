@@ -25,6 +25,7 @@ Bundle 'skammer/vim-css-color'
 " Languages
 Bundle 'vim-scripts/VimClojure'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
