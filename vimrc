@@ -51,8 +51,8 @@ set smartcase
 "remove highlight when press enter
 nnoremap <CR> :noh<CR><CR>
 
-set nowrap " Switch wrap off for everything
-set autoindent		" always set autoindenting on
+set nowrap
+set autoindent
 
 " Softtabs, 2 spaces
 set tabstop=2
