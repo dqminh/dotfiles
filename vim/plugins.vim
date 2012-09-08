@@ -6,7 +6,6 @@ Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rake'
@@ -20,6 +19,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'benmills/vimux'
 Bundle "ecomba/vim-ruby-refactoring"
+Bundle 'wincent/Command-T'
 
 " Languages
 Bundle 'vim-scripts/VimClojure'

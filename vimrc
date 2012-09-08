@@ -130,9 +130,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Clojure
 let vimclojure#HighlightBuiltins=1
 
-" CtrlP
-let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+" Command-T
+let g:CommandTMaxHeight=50
+let g:CommandTMatchWindowReverse=1
 
 " Theme
 set ttyfast

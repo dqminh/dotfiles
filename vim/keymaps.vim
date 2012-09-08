@@ -39,8 +39,8 @@ vmap <leader>] >gv
 vmap <leader>[ <gv
 
 " YankRing
-nnoremap <silent> <F3> :YRShow<cr>
-inoremap <silent> <F3> <ESC>:YRShow<cr>
+nnoremap <silent> <C-p> :YRShow<cr>
+inoremap <silent> <C-p> <ESC>:YRShow<cr>
 
 " NERDTree
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
@@ -53,8 +53,6 @@ map <leader>f :Ack!<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
-
-" Insert hashrocket
 let g:EasyMotion_leader_key = '<Leader>m'
 
 " Tabular
@@ -78,10 +76,9 @@ noremap <leader>rc :Rcontroller
 imap <C-L> <Space>=><Space>
 
 " CtrlP
-map <leader>t :CtrlP<CR>
-map <leader>tc :CtrlP app/controllers<CR>
-map <leader>tm :CtrlP app/models<CR>
-map <leader>tv :CtrlP app/views<CR>
-map <leader>tp :CtrlP app/presenters<CR>
-map <leader>th :CtrlP app/helpers<CR>
-map <leader>ta :CtrlP app/assets<CR>
+map <leader><leader> :CommandT<CR>
+map <leader>te :CommandTJump<CR>
+map <leader>tt :CommandTTag<CR>
+
+" Rebuilt tags
+map <leader>asd :!ctags -R --languages=ruby,javascript<CR>
