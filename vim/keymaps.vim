@@ -70,3 +70,10 @@ imap <C-L> <Space>=><Space>
 
 " CtrlP
 map <leader>t :CtrlP<CR>
+map <leader>tc :CtrlP app/controllers<CR>
+map <leader>tm :CtrlP app/models<CR>
+map <leader>tv :CtrlP app/views<CR>
+map <leader>tp :CtrlP app/presenters<CR>
+map <leader>th :CtrlP app/helpers<CR>
+map <leader>t :CtrlP<CR>
+map <leader>t :CtrlP<CR>

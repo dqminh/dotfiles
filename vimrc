@@ -43,6 +43,11 @@ set textwidth=79               " Default maximum textwidth is 79
 set colorcolumn=80,120         " Highlight column 80 and 120 to remind us that we should open a new line
 set cmdheight=1                " Commandbar height
 set hid                        " Change buffer without saving
+set switchbuf=useopen          " Use opened buffer instead of creating new one
+
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
 
 set hlsearch
 set incsearch       " incremental searching
@@ -131,7 +136,7 @@ let vimclojure#HighlightBuiltins=1
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
 " Theme
 set ttyfast
