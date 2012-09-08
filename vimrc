@@ -45,10 +45,6 @@ set cmdheight=1                " Commandbar height
 set hid                        " Change buffer without saving
 set switchbuf=useopen          " Use opened buffer instead of creating new one
 
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-
 set hlsearch
 set incsearch       " incremental searching
 set ignorecase      " ignore case when searching
