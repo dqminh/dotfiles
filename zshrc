@@ -85,3 +85,8 @@ export TRACKER_TOKEN=ecfb03528d22aaf27d487c21d728e131
 
 # Stop autocorrect
 unsetopt correct_all
+
+# source rvmrc if it is in the current directory
+# rvm fucked up somehow that i'm not sure what to do. But re-sourced rvmrc
+# fixed it
+[[ -s "$PWD/.rvmrc" ]] && source "$PWD/.rvmrc"

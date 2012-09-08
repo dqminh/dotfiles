@@ -18,6 +18,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'benmills/vimux'
 
 " Languages
 Bundle 'vim-scripts/VimClojure'
