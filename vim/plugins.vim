@@ -19,6 +19,7 @@ Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'benmills/vimux'
+Bundle "ecomba/vim-ruby-refactoring"
 
 " Languages
 Bundle 'vim-scripts/VimClojure'

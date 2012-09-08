@@ -1,4 +1,5 @@
 set pastetoggle=<F3>
+
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
@@ -42,13 +43,13 @@ nnoremap <silent> <F3> :YRShow<cr>
 inoremap <silent> <F3> <ESC>:YRShow<cr>
 
 " NERDTree
-nnoremap <silent><leader>nt :NERDTreeToggle<CR>
+nnoremap <silent><leader>nf :NERDTreeFind<CR>
 
 " CTags
 map <C-\> :tnext<CR>
 
 " Ack
-map <leader>a :Ack!<space>
+map <leader>f :Ack!<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
@@ -64,6 +65,14 @@ if exists(":Tabularize")
   noremap :T{ :Tabularize /{
   noremap :T :Tabularize /}}
 endif
+
+" Rails
+noremap <leader>a :A<CR>
+noremap <leader>av :AV<CR>
+noremap <leader>re :R<CR>
+noremap <leader>rv :RV<CR>
+noremap <leader>rm :Rmodel
+noremap <leader>rc :Rcontroller
 
 " Insert hashrocket
 imap <C-L> <Space>=><Space>
