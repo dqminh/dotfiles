@@ -75,5 +75,4 @@ map <leader>tm :CtrlP app/models<CR>
 map <leader>tv :CtrlP app/views<CR>
 map <leader>tp :CtrlP app/presenters<CR>
 map <leader>th :CtrlP app/helpers<CR>
-map <leader>t :CtrlP<CR>
-map <leader>t :CtrlP<CR>
+map <leader>ta :CtrlP app/assets<CR>
