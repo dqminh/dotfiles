@@ -32,3 +32,4 @@ Bundle 'cakebaker/scss-syntax.vim'
 
 " Colorschemes
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
