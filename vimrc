@@ -47,7 +47,7 @@ set switchbuf=useopen          " Use opened buffer instead of creating new one
 
 " Folding
 set foldlevelstart=99
-set foldmethod=syntax
+set foldmethod=manual
 
 set hlsearch
 set incsearch       " incremental searching
@@ -145,10 +145,6 @@ let g:CommandTMatchWindowReverse=1
 
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-" Foldmethod
-set foldmethod=manual
-set foldlevelstart=99
 
 " Theme
 set ttyfast
