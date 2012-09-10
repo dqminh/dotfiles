@@ -71,7 +71,9 @@ set modelines=0
 set showmode
 set showmatch
 set gdefault
-set cursorline
+
+" Speedup rendering alot
+set nocursorline
 set hidden
 set scrolloff=5     " keep 5 lines when scrolling
 
@@ -134,9 +136,19 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Clojure
 let vimclojure#HighlightBuiltins=1
 
+" vim-ruby
+let ruby_no_expensive=1
+
 " Command-T
 let g:CommandTMaxHeight=50
 let g:CommandTMatchWindowReverse=1
+
+" Remove whitespace on save
+autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Foldmethod
+set foldmethod=manual
+set foldlevelstart=99
 
 " Theme
 set ttyfast

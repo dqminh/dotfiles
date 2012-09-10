@@ -1,6 +1,6 @@
 set guioptions=aAce
 set background=dark
-set guifont=Inconsolata:h16
+set guifont=Inconsolata:h14
 set vb
 
 " Include user's local vim config
