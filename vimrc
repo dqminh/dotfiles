@@ -45,6 +45,10 @@ set cmdheight=1                " Commandbar height
 set hid                        " Change buffer without saving
 set switchbuf=useopen          " Use opened buffer instead of creating new one
 
+" Folding
+set foldlevelstart=99
+set foldmethod=syntax
+
 set hlsearch
 set incsearch       " incremental searching
 set ignorecase      " ignore case when searching
