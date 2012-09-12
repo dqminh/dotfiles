@@ -8,4 +8,4 @@ My dotfiles
 
 == Environment
 
-You need zsh, iterm2, oh-my-zsh, tmux, reattach-to-user-namespace, macvim
+You need zsh, iterm2, prezto, tmux, reattach-to-user-namespace, macvim
