@@ -139,9 +139,8 @@ let vimclojure#HighlightBuiltins=1
 " vim-ruby
 let ruby_no_expensive=1
 
-" Command-T
-let g:CommandTMaxHeight=50
-let g:CommandTMatchWindowReverse=1
+"CtrlP
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e

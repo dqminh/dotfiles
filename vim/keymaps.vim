@@ -28,16 +28,6 @@ inoremap <right> <nop>
 nnoremap <leader>v V`]
 nnoremap <silent> <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
-" Navigate windows
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" leader-][ to increase/decrease indentation
-vmap <leader>] >gv
-vmap <leader>[ <gv
-
 " YankRing
 nnoremap <silent> <C-p> :YRShow<cr>
 inoremap <silent> <C-p> <ESC>:YRShow<cr>
@@ -54,7 +44,6 @@ map <leader>f :Ack!<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
-let g:EasyMotion_leader_key = '<Leader>m'
 
 " Tabular
 if exists(":Tabularize")
@@ -77,9 +66,7 @@ noremap <leader>rc :Rcontroller
 imap <C-L> <Space>=><Space>
 
 " CtrlP
-map <leader><leader> :CommandT<CR>
-map <leader>te :CommandTJump<CR>
-map <leader>tt :CommandTTag<CR>
+let g:ctrlp_map = "<leader><leader>"
 
 " Rebuilt tags
 map <leader>asd :!ctags -R --languages=ruby,javascript<CR>

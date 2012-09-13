@@ -1,6 +1,6 @@
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'mileszs/ack.vim'
-Bundle 'chrismetcalf/vim-yankring'
+Bundle 'vim-scripts/YankRing.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
@@ -18,7 +18,7 @@ Bundle 'ervandew/supertab'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'benmills/vimux'
 Bundle "ecomba/vim-ruby-refactoring"
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 
 " Languages
 Bundle 'vim-scripts/VimClojure'
