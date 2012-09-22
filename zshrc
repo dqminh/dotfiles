@@ -57,7 +57,7 @@ alias reloadrvm="source .rvmrc"
 alias gg='git pr && git pom'
 
 # Customize to your needs...
-export GOROOT=/usr/local/Cellar/go/1.0.1
+export GOROOT=/usr/local/Cellar/go/1.0.2
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
