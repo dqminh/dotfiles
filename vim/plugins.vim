@@ -29,6 +29,8 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'nono/vim-handlebars'
 
 " Colorschemes
 Bundle 'nanotech/jellybeans.vim'
