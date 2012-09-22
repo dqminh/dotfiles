@@ -55,6 +55,9 @@ alias gl="git log --pretty=format:'%h - %an, %ar : %s'"
 alias fspec="rspec --no-drb"
 alias reloadrvm="source .rvmrc"
 alias gg='git pr && git pom'
+alias edit_vim_plugin='vim ~/.vim/plugins.vim'
+alias edit_vim_keymap='vim ~/.vim/keymaps.vim'
+alias edit_vim_config='vim ~/.vimrc'
 
 # Customize to your needs...
 export GOROOT=/usr/local/Cellar/go/1.0.2
