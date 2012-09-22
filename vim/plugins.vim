@@ -19,6 +19,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'benmills/vimux'
 Bundle "ecomba/vim-ruby-refactoring"
 Bundle 'kien/ctrlp.vim'
+Bundle 'AndrewRadev/switch.vim'
 
 " Languages
 Bundle 'vim-scripts/VimClojure'

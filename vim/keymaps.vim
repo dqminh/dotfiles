@@ -62,6 +62,9 @@ noremap <leader>rv :RV<CR>
 noremap <leader>rm :Rmodel
 noremap <leader>rc :Rcontroller
 
+"Switch
+nnoremap - :Switch<cr>
+
 " Insert hashrocket
 imap <C-L> <Space>=><Space>
 
