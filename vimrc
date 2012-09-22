@@ -73,7 +73,7 @@ set showmatch
 set gdefault
 
 " Speedup rendering alot
-set nocursorline
+set cursorline
 set hidden
 set scrolloff=5     " keep 5 lines when scrolling
 
@@ -148,6 +148,7 @@ autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWriteP
 " Theme
 set ttyfast
 set background=dark
+set lazyredraw
 colorscheme jellybeans
 
 if filereadable(expand("~/.vim/filetypes.vim"))
