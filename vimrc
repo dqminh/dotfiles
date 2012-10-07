@@ -144,6 +144,8 @@ let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -
 
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+" For go, trigger Fmt
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Theme
 set ttyfast
