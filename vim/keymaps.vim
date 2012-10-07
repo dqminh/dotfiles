@@ -24,6 +24,17 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" Navigate
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprevious<CR>
+map <F1> :bnext<CR>
+map <F2> :bprevious<CR>
+
+" Fugitive
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gs :Gstatus<CR>
+
 " reselect the text that was the pasted
 nnoremap <leader>v V`]
 nnoremap <silent> <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
@@ -73,3 +84,7 @@ let g:ctrlp_map = "<leader><leader>"
 
 " Rebuilt tags
 map <leader>asd :!ctags -R --languages=ruby,javascript<CR>
+
+" Vimux
+nnoremap <leader>qp :VimuxPromptCommand<Cr>
+nnoremap <leader>qr :VimuxRunLastCommand<Cr>
