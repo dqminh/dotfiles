@@ -60,7 +60,12 @@ alias edit_vim_keymap='vim ~/.vim/keymaps.vim'
 alias edit_vim_config='vim ~/.vimrc'
 
 # Customize to your needs...
-export GOROOT=/usr/local/Cellar/go/1.0.2
+export CC=/usr/local/bin/gcc-4.2
+export CPPFLAGS="-I/opt/X11/include"
+export CFLAGS="-I/opt/X11/include"
+export NODE_PATH=/usr/local/lib/node_modules
+export GOPATH=$HOME/gocode
+export GOROOT=/usr/local/Cellar/go/1.0.3
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
@@ -69,12 +74,7 @@ export EDITOR=vim
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:$GOROOT/bin
-
-export GOPATH=$HOME/gocode
-export CC=/usr/local/bin/gcc-4.2
-export CPPFLAGS="-I/opt/X11/include"
-export CFLAGS="-I/opt/X11/include"
-export NODE_PATH=/usr/local/lib/node_modules
+export PATH=$PATH:$GOPATH/bin
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export JRUBY_OPTS='--1.9'
@@ -85,6 +85,7 @@ export S3_SECRET_ACCESS_KEY=MTOLQ8pb948BhFktl2X4GRMFdGu6PR3pJI4etadI
 export S3_BUCKET=assets.viki-staging
 export RUBYMINE_HOME=/Applications/RubyMine.app/
 export TRACKER_TOKEN=ecfb03528d22aaf27d487c21d728e131
+export ANDROID_SDK_ROOT=/usr/local/Cellar/android-sdk/r20.0.3
 
 # Stop autocorrect
 unsetopt correct_all
