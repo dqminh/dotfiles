@@ -5,6 +5,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'

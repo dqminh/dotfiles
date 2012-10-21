@@ -152,6 +152,7 @@ set ttyfast
 set background=dark
 set lazyredraw
 colorscheme jellybeans
+let g:Powerline_symbols = 'fancy'
 
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim
