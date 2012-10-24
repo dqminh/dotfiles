@@ -58,6 +58,8 @@ alias gg='git pr && git pom'
 alias edit_vim_plugin='vim ~/.vim/plugins.vim'
 alias edit_vim_keymap='vim ~/.vim/keymaps.vim'
 alias edit_vim_config='vim ~/.vimrc'
+alias z='. ~/bin/z/z.sh'
+alias j='z'
 
 # Customize to your needs...
 export CC=/usr/local/bin/gcc-4.2
@@ -71,10 +73,14 @@ export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 
 # PATHS
+export NODE_PATH=/usr/local/lib/node_modules
+export GOROOT=/usr/local/Cellar/go/1.0.3
+export GOPATH=$HOME/gocode
+export GOBIN=$GOROOT/bin
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/bin
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export JRUBY_OPTS='--1.9'
