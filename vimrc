@@ -17,6 +17,7 @@ if filereadable(expand("~/.vim/plugins.vim"))
   source ~/.vim/plugins.vim
 endif
 
+filetype plugin on
 filetype plugin indent on
 " \ is the leader character
 let mapleader = ","
@@ -78,13 +79,6 @@ set hidden
 set scrolloff=5     " keep 5 lines when scrolling
 
 set laststatus=2
-" Broken down into easily includeable segments
-set statusline=%<%f\    " Filename
-set statusline+=%w%h%m%r " Options
-set statusline+=%{fugitive#statusline()} "  Git Hotness
-set statusline+=\ [%{&ff}/%Y]            " filetype
-set statusline+=\ [%F]          " current dir
-set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 if has('cmdline_info')
   set ruler                   " show the ruler
@@ -141,11 +135,17 @@ let ruby_no_expensive=1
 
 "CtrlP
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:ctrlp_max_height = 20
+let g:ctrlp_extensions = ['tag', 'line', 'buffertag']
+
+"Ack.vim
+let g:ackprg="ag -U --nocolor --nogroup --column"
 
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
-" For go, trigger Fmt
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" Powerline
+let g:Powerline_symbols = 'fancy'
 
 " Theme
 set ttyfast
