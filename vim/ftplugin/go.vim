@@ -5,3 +5,4 @@ set softtabstop=4
 set shiftround
 set shiftwidth=4
 setlocal omnifunc=gocomplete#Complete
+au BufWritePre <buffer> Fmt
