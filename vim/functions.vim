@@ -46,7 +46,3 @@ function! RunTests(filename)
     end
   end
 endfunction
-
-" Key bindings
-vnoremap <leader>rv :call ExtractVariable()<cr>
-nnoremap <leader>ri :call InlineVariable()<cr>
