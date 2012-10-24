@@ -5,6 +5,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-scripts/matchit.zip'
 Bundle 'Lokaltog/vim-powerline'
 
 Bundle 'tpope/vim-rails'
@@ -23,6 +24,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'AndrewRadev/switch.vim'
 
 " Languages
+Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'vim-scripts/VimClojure'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'vim-ruby/vim-ruby'
@@ -36,3 +38,4 @@ Bundle 'nono/vim-handlebars'
 " Colorschemes
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle 'Lokaltog/vim-distinguished'
