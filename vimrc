@@ -144,6 +144,27 @@ let g:ackprg="ag -U --nocolor --nogroup --column"
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Autocomplete
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+set completeopt=menu,menuone,longest " no scratch
+
+function MyTagContext()
+  if filereadable(expand('%:p:h') . '/tags')
+    return "\<c-x>\<c-]>"
+  endif
+  " no return will result in the evaluation of the next
+  " configured context
+endfunction
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCompletionContexts = ['MyTagContext', 's:ContextText', 's:ContextDiscover']
+
+
 " Powerline
 let g:Powerline_symbols = 'fancy'
 
