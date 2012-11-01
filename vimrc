@@ -153,6 +153,7 @@ autocmd QuickFixCmdPost *grep* cwindow " Open quickfix after grep
 " Enable omni completion.
 set complete-=i
 set completeopt=menu,menuone,longest " no scratch
+set iskeyword+=- " do not use - as a word separator
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
