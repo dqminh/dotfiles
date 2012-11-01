@@ -8,6 +8,7 @@
 --exclude=vendor/rhino
 --exclude=vendor/jslint
 --exclude=doc
+--tag-relative=yes
 
 --langdef=coffee
 --langmap=coffee:.coffee
