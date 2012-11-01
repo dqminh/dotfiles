@@ -147,6 +147,8 @@ let g:ackprg="ag -i --nocolor --nogroup --column"
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+autocmd QuickFixCmdPost *grep* cwindow " Open quickfix after grep
+
 " Autocomplete
 " Enable omni completion.
 set complete-=i
