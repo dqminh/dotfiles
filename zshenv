@@ -1,43 +1,6 @@
 #
 # Defines environment variables.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# Set the path to Oh My Zsh.
-export OMZ="$HOME/.oh-my-zsh"
-
-#
-# Paths
-#
-
-typeset -gU cdpath fpath mailpath manpath path
-typeset -gUT INFOPATH infopath
-
-# Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
-# Set the list of directories that info searches for manuals.
-infopath=(
-  /usr/local/share/info
-  /usr/share/info
-  $infopath
-)
-
-# Set the list of directories that man searches for manuals.
-manpath=(
-  /usr/local/share/man
-  /usr/share/man
-  $manpath
-)
-
-for path_file in /etc/manpaths.d/*(.N); do
-  manpath+=($(<$path_file))
-done
-unset path_file
 
 # Set the list of directories that Zsh searches for programs.
 path=(
@@ -63,7 +26,6 @@ fi
 #
 # Editors
 #
-
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
@@ -71,7 +33,6 @@ export PAGER='less'
 #
 # Browser
 #
-
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
@@ -89,6 +50,3 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $+commands[lesspipe.sh] )); then
   export LESSOPEN='| /usr/bin/env lesspipe.sh %s 2>&-'
 fi
-
-# load rvmrc
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
