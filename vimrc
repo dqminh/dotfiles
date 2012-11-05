@@ -139,7 +139,7 @@ let g:ctrlp_max_height = 20
 let g:ctrlp_extensions = ['tag', 'line', 'buffertag']
 
 "Ack.vim
-let g:ackprg="ag -U --nocolor --nogroup --column"
+" let g:ackprg="ag -U --nocolor --nogroup --column"
 
 " Remove whitespace on save
 autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
