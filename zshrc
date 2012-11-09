@@ -5,6 +5,7 @@ antigen-lib
 
 # Load zsh plugins
 antigen-bundle vundle
+antigen-bundle ssh-agent
 antigen-bundle zsh-users/zsh-history-substring-search
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle kennethreitz/autoenv
