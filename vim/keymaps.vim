@@ -34,6 +34,9 @@ map <F2> :bprevious<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>dp :diffput<CR>
+nnoremap <leader>dg :diffget<CR>
 
 " reselect the text that was the pasted
 nnoremap <leader>v V`]
