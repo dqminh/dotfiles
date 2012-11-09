@@ -7,6 +7,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-scripts/bufkill.vim'
 
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
