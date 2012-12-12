@@ -16,6 +16,9 @@ antigen-theme sorin
 # Apply
 antigen-apply
 
+# Disable auto title
+export DISABLE_AUTO_TITLE="true"
+
 # ALIAS
 alias rake="noglob rake"
 alias gl="git log --pretty=format:'%h - %an, %ar : %s'"
@@ -27,12 +30,31 @@ alias edit_vim_keymap='vim ~/.vim/keymaps.vim'
 alias edit_vim_config='vim ~/.vimrc'
 alias z='. ~/bin/z/z.sh'
 alias j='z'
+alias mn='tmux new -s'
+alias mt='tmux a -t'
 
 # Customize to your needs...
 export NODE_PATH=/usr/local/lib/node_modules
 export GOPATH=$HOME/gocode
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# Functions
+# =========
+#
+# delete an lxc box
+function delete-box() {
+  sudo lxc-stop -n $1
+  sudo umount "/var/lib/lxc/${1}"
+  sudo lxc-destroy -n $1
+  sudo rm -rf "/var/lib/lxc/${1}_delta"
+}
+
+# delete a branch
+function delete-branch() {
+  git branch -D $1
+  git push origin ":${1}"
+}
 
 # PATHS
 export NODE_PATH=/usr/local/lib/node_modules
