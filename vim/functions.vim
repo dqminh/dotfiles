@@ -13,7 +13,7 @@ function! RunTestFile(...)
   endif
 
   " Run the tests for the previously-marked file.
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_spec.js.coffee\|_spec.coffee\)$') != -1
   if in_test_file
     call SetTestFile()
   elseif !exists("t:grb_test_file")
@@ -24,7 +24,7 @@ endfunction
 
 function! RunNearestTest()
   let spec_line_number = line('.')
-  call RunTestFile(":" . spec_line_number . " -b")
+  call RunTestFile(":" . spec_line_number)
 endfunction
 
 function! SetTestFile()
@@ -37,6 +37,8 @@ function! RunTests(filename)
   :w
   if match(a:filename, '\.feature$') != -1
     return RunVimTmuxCommand("script/features " . a:filename)
+  elseif match(a:filename, '\(_spec.js.coffee\|_spec.coffee\)$') != -1
+    return RunVimTmuxCommand("./node_modules/.bin/mocha " . a:filename)
   else
     if filereadable("script/test")
       return RunVimTmuxCommand("script/test " . a:filename)

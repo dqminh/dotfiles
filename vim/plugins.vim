@@ -40,3 +40,4 @@ Bundle 'nono/vim-handlebars'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'Lokaltog/vim-distinguished'
+Bundle 'altercation/vim-colors-solarized'

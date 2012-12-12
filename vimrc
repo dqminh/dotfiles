@@ -74,7 +74,6 @@ set showmatch
 set gdefault
 
 " Speedup rendering alot
-set cursorline
 set hidden
 set scrolloff=5     " keep 5 lines when scrolling
 
@@ -154,19 +153,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 set completeopt=menu,menuone,longest " no scratch
 
-function MyTagContext()
-  if filereadable(expand('%:p:h') . '/tags')
-    return "\<c-x>\<c-]>"
-  endif
-  " no return will result in the evaluation of the next
-  " configured context
-endfunction
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['MyTagContext', 's:ContextText', 's:ContextDiscover']
-
-
 " Powerline
 let g:Powerline_symbols = 'fancy'
+
+" Vimux
+let g:VimuxHeight = 10
+let VimuxUseNearestPane = 1
 
 " Theme
 set ttyfast

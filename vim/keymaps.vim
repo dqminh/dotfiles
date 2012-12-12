@@ -29,6 +29,7 @@ nnoremap <leader>cn :cnext<CR>
 nnoremap <leader>cp :cprevious<CR>
 map <F1> :bnext<CR>
 map <F2> :bprevious<CR>
+map <F3> :cclose<CR>
 
 " Fugitive
 nnoremap <leader>gb :Gblame<CR>
