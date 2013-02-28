@@ -4,11 +4,8 @@ source $HOME/.antigen.zsh
 antigen-lib
 
 # Load zsh plugins
-antigen-bundle vundle
 antigen-bundle ssh-agent
 antigen-bundle zsh-users/zsh-history-substring-search
-antigen-bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle kennethreitz/autoenv
 
 # Choose a theme
 antigen-theme sorin
@@ -78,8 +75,3 @@ unsetopt correct_all
 
 # Load nvm
 source ~/.nvm/nvm.sh
-
-# source rvmrc if it is in the current directory
-# rvm fucked up somehow that i'm not sure what to do. But re-sourced rvmrc
-# fixed it
-[[ -s "$PWD/.rvmrc" ]] && source "$PWD/.rvmrc"
