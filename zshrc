@@ -29,6 +29,7 @@ alias z='. ~/bin/z/z.sh'
 alias j='z'
 alias mn='tmux new -s'
 alias mt='tmux a -t'
+alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'
 
 # Customize to your needs...
 export NODE_PATH=/usr/local/lib/node_modules

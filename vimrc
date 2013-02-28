@@ -29,7 +29,7 @@ syntax on
 set backspace=indent,eol,start
 
 " Use system clipboard
-set clipboard=unnamed
+set clipboard+=unnamed
 
 set number                     " Show line number
 set encoding=utf-8             " Enable utf-8 encoding by default
