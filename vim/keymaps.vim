@@ -50,6 +50,7 @@ inoremap <silent> <C-p> <ESC>:YRShow<cr>
 " NERDTree
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
 nnoremap <silent><leader>nt :NERDTreeToggle<CR>
+nnoremap <silent><space> :BufExplorer<CR>
 
 " CTags
 map <C-\> :tnext<CR>
