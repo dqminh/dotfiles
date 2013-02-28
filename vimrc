@@ -167,6 +167,9 @@ set lazyredraw
 colorscheme jellybeans
 let g:Powerline_symbols = 'fancy'
 
+" % to bounce from do to end etc.
+runtime! macros/matchit.vim
+
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim
 endif
