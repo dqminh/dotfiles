@@ -56,7 +56,7 @@ function delete-branch() {
 
 # PATHS
 export NODE_PATH=/usr/local/lib/node_modules
-export GOPATH=$HOME/gospace
+export GOPATH=$HOME/gocode
 export GOBIN=$GOPATH/bin
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 export PATH=$PATH:$GOBIN

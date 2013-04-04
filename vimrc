@@ -187,6 +187,10 @@ let g:Powerline_symbols = 'fancy'
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
+" not slow when highlight long line
+set synmaxcol=160
+let g:syntastic_javascript_checkers=['jshint']
+
 if filereadable(expand("~/.vim/filetypes.vim"))
   source ~/.vim/filetypes.vim
 endif
