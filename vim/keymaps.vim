@@ -12,6 +12,9 @@ vmap P p :call setreg('"', getreg('0')) <CR>
 " Visual mode: D
 vmap D y'>p
 
+" map Y to make it consistent with C and D
+nnoremap Y y$
+
 " Maps arrow key to resizing a window split
 nnoremap <left> <C-w>5>
 nnoremap <up> <C-w>5-
@@ -50,7 +53,13 @@ inoremap <silent> <C-p> <ESC>:YRShow<cr>
 " NERDTree
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
 nnoremap <silent><leader>nt :NERDTreeToggle<CR>
-nnoremap <silent><space> :BufExplorer<CR>
+
+" OS-X like space for scroll
+nnoremap <Space> <C-F>
+
+" Backspace closes buffer.
+nnoremap <BS> :BD<CR>
+nnoremap <S-BS> :bd<CR>
 
 " CTags
 map <C-\> :tnext<CR>
@@ -63,11 +72,11 @@ map <leader>/ <plug>NERDCommenterToggle<CR>
 
 " Tabular
 if exists(":Tabularize")
-  noremap :T= :Tabularize /=
-  noremap :T> :Tabularize /=>
-  noremap :T: :Tabularize /:
-  noremap :T{ :Tabularize /{
-  noremap :T :Tabularize /}}
+  noremap <leader>t= :Tabularize /=
+  noremap <leader>t> :Tabularize /=>
+  noremap <leader>t: :Tabularize /:\zs
+  noremap <leader>ts :Tabularize /:/l1c0l0
+  noremap <leader>t{ :Tabularize /{
 endif
 
 " Rails

@@ -4,6 +4,8 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+set encoding=utf-8
+
 " start to setup vundle
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -136,6 +138,8 @@ let ruby_no_expensive=1
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_max_height = 20
 let g:ctrlp_extensions = ['tag', 'line', 'buffertag']
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+let g:ctrlp_cmd = 'CtrlPLastMode'
 
 "Ack.vim
 let g:ackprg="ag -i --nocolor --nogroup --column"
@@ -145,12 +149,7 @@ autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWriteP
 
 " Autocomplete
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+set complete-=i
 set completeopt=menu,menuone,longest " no scratch
 
 " Powerline

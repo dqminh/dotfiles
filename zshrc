@@ -55,11 +55,10 @@ function delete-branch() {
 
 # PATHS
 export NODE_PATH=/usr/local/lib/node_modules
-export GOPATH=$HOME/gocode
-export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/gospace
+export GOBIN=$GOPATH/bin
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$GOBIN
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export JRUBY_OPTS='--1.9'
@@ -75,3 +74,5 @@ unsetopt correct_all
 
 # Load nvm
 source ~/.nvm/nvm.sh
+
+export PATH=$PATH:$HOME/bin

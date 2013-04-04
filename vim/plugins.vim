@@ -22,6 +22,7 @@ Bundle 'benmills/vimux'
 Bundle "ecomba/vim-ruby-refactoring"
 Bundle 'kien/ctrlp.vim'
 Bundle 'AndrewRadev/switch.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
 
 " Languages
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
@@ -34,6 +35,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'nono/vim-handlebars'
+Bundle 'pangloss/vim-javascript'
 " Require http://pypi.python.org/pypi/flake8/ to be installed
 Bundle 'nvie/vim-flake8'
 
