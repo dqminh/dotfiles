@@ -94,6 +94,7 @@ nnoremap - :Switch<cr>
 imap <C-L> <Space>=><Space>
 
 " CtrlP
+noremap <leader>m :CtrlPCurWD<CR>
 let g:ctrlp_map = "<leader><leader>"
 
 " Rebuilt tags

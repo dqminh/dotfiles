@@ -159,6 +159,21 @@ let g:Powerline_symbols = 'fancy'
 let g:VimuxHeight = 10
 let VimuxUseNearestPane = 1
 
+" Buffergator
+let g:buffergator_viewport_split_policy="T"
+
+" Rails projection
+let g:rails_gem_projects = {
+      \ "active_model_serializers": {
+      \   "app/serializers/*_serializer.rb": {
+      \     "command": "serializer",
+      \     "affinity": "model"}},
+      \ "factory": {
+      \   "spec/factories/*_factory.rb": {
+      \     "command": "factory",
+      \     "affinity": "model",
+      \     "alternate": "app/models/%s.rb"}}}
+
 " Theme
 set ttyfast
 set background=dark
