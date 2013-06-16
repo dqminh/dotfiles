@@ -382,6 +382,10 @@ nnoremap <leader>qr :VimuxRunLastCommand<Cr>
 "remove highlight when press enter
 nnoremap <CR> :noh<CR><CR>
 
+" +/-: Increment number
+nnoremap + <c-a>
+nnoremap - <c-x>
+
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
