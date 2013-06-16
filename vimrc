@@ -1,20 +1,14 @@
-" based on http://github.com/jferris/config_files/blob/master/vimrc
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
 set encoding=utf-8
-
-" start to setup vundle
+"------------------------------------------------------------------------------
+" BUNDLES
+"------------------------------------------------------------------------------
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
 Bundle 'gmarik/vundle'
-
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/YankRing.vim'
@@ -25,7 +19,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/bufkill.vim'
-
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rake'
@@ -33,7 +26,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
-
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'benmills/vimux'
 Bundle "ecomba/vim-ruby-refactoring"
@@ -44,8 +36,6 @@ Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/syntastic'
-
-" Languages
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'vim-scripts/VimClojure'
 Bundle 'jnwhiteh/vim-golang'
@@ -58,18 +48,13 @@ Bundle 'groenewege/vim-less'
 Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
 Bundle 'klen/python-mode'
-
-" Colorschemes
 Bundle 'nanotech/jellybeans.vim'
-
 filetype plugin on
 filetype plugin indent on
-" \ is the leader character
-let mapleader = ","
 syntax on
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+let mapleader = ","
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
 
 " Use system clipboard
 " Writes to the unnamed register also writes to the * and + registers. This
@@ -80,60 +65,48 @@ else
   set clipboard=unnamed
 endif
 
-set number                     " Show line number
-set encoding=utf-8             " Enable utf-8 encoding by default
-set nobackup                   " Disable backup file
+set number             " Show line number
+set encoding=utf-8     " Enable utf-8 encoding by default
+set nobackup           " Disable backup file
 set nowritebackup
-set noswapfile                 " Disable swap file
-set undofile                   " Enable undofile
-set undodir=/tmp               " Set the undo destination to tmp
-set undolevels=700             " Set how many undo vim has to remember
-set autoread                   " Set autoread when a file is changed from outside
-set history=1000               " Sets how many lines of history vim has to remember
-set so=7                       " Set 7 lines to the cursor when moving vertical
-set textwidth=79               " Default maximum textwidth is 79
-set colorcolumn=80,120         " Highlight column 80 and 120 to remind us that we should open a new line
-set cmdheight=1                " Commandbar height
-set hid                        " Change buffer without saving
-set switchbuf=useopen          " Use opened buffer instead of creating new one
-
-" Folding
-set foldlevelstart=99
-set foldmethod=manual
-
-set hlsearch
-set incsearch       " incremental searching
-set ignorecase      " ignore case when searching
-set smartcase
-"remove highlight when press enter
-nnoremap <CR> :noh<CR><CR>
-
+set noswapfile         " Disable swap file
+set undofile           " Enable undofile
+set undodir=/tmp       " Set the undo destination to tmp
+set undolevels=700     " Set how many undo vim has to remember
+set autoread           " Set autoread when a file is changed from outside
+set history=1000       " Sets how many lines of history vim has to remember
+set so=7               " Set 7 lines to the cursor when moving vertical
+set textwidth=79       " Default maximum textwidth is 79
+set colorcolumn=80,120 " Highlight column 80 and 120 to remind us that we should open a new line
+set cmdheight=1        " Commandbar height
+set hid                " Change buffer without saving
+set switchbuf=useopen  " Use opened buffer instead of creating new one
 set nowrap
 set autoindent
-
-" Softtabs, 2 spaces
+set foldlevelstart=99
+set foldmethod=manual
+set hlsearch           " Highlight search
+set incsearch          " incremental searching
+set ignorecase         " ignore case when searching
+set smartcase
 set tabstop=2
 set softtabstop=2
-set shiftround                 " When at 3 spaces and I hit >> , go to nearest tabstop/shiftwidth
+set shiftround
 set shiftwidth=2
 set expandtab
-
-" Status bar
 set modelines=0
 set showmode
 set showmatch
 set gdefault
-
-" Speedup rendering alot
+set scrolloff=5        " keep 5 lines when scrolling
 set hidden
-set scrolloff=5     " keep 5 lines when scrolling
-
 set laststatus=2
+set number " Show line number
+set numberwidth=5 "Max number is 99999
 
 if has('cmdline_info')
-  set ruler                   " show the ruler
-  set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-  set showcmd                 " show partial commands in status line and selected characters/lines in visual mode
+  set ruler
+  set showcmd
 endif
 
 set shortmess=atI   " Abbreviate messages
@@ -151,10 +124,6 @@ set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,*.pyc,.svn,vendor/gems/*
 
-" Numbers
-set number
-set numberwidth=5
-
 " Tags
 set tags=./tags;
 
@@ -170,12 +139,6 @@ autocmd BufReadPost *
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$', '\docs' , '\htmlcov']
 let NERDTreeHighlightCursorline=1
 let NERDTreeChDirMode = 2
-
-" SuperTab
-let g:SuperTabCrMapping=0
-
-" Indent guide
-let g:indent_guides_enable_on_vim_startup = 1
 
 " Clojure
 let vimclojure#HighlightBuiltins=1
@@ -194,9 +157,7 @@ let g:ctrlp_cmd = 'CtrlPLastMode'
 let g:ackprg="ag -i --nocolor --nogroup --column"
 
 " Remove whitespace on save
-autocmd FileType c,go,python,ruby,javascript,coffeescript,html autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-autocmd QuickFixCmdPost *grep* cwindow " Open quickfix after grep
+autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Autocomplete
 " Enable omni completion.
@@ -211,9 +172,6 @@ let g:Powerline_symbols = 'fancy'
 let g:VimuxHeight = 10
 let VimuxUseNearestPane = 1
 
-" Buffergator
-let g:buffergator_viewport_split_policy="T"
-
 " Rails projection
 let g:rails_gem_projects = {
       \ "active_model_serializers": {
@@ -226,19 +184,22 @@ let g:rails_gem_projects = {
       \     "affinity": "model",
       \     "alternate": "app/models/%s.rb"}}}
 
+let g:syntastic_javascript_checkers=['jshint']
+
 " Theme
+let g:Powerline_symbols = 'fancy'
 set ttyfast
 set background=dark
 set lazyredraw
+set synmaxcol=160 " not slow when highlight long line
 colorscheme jellybeans
-let g:Powerline_symbols = 'fancy'
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
 
-" not slow when highlight long line
-set synmaxcol=160
-let g:syntastic_javascript_checkers=['jshint']
+"------------------------------------------------------------------------------
+" FILETYPES
+"------------------------------------------------------------------------------
 
 au BufNewFile,BufRead *.txt setfiletype text
 au BufNewFile,BufRead *.json set syntax=javascript ft=javascript
@@ -258,13 +219,9 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RUNNING TESTS
-" This requires vimux and tmux running
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>l :call RunTestFile()<CR>
-map <leader>L :call RunNearestTest()<CR>
-
+"------------------------------------------------------------------------------
+" FUNCTIONS
+"------------------------------------------------------------------------------
 function! RunTestFile(...)
   if a:0
     let command_suffix = a:1
@@ -309,7 +266,14 @@ function! RunTests(filename)
   end
 endfunction
 
-set pastetoggle=<F3>
+"------------------------------------------------------------------------------
+" KEYMAPS
+"------------------------------------------------------------------------------
+map <leader>l :call RunTestFile()<CR>
+map <leader>L :call RunNearestTest()<CR>
+
+" <Leader>1: Toggle between paste mode
+nnoremap <silent> <Leader>1 :set paste!<cr>
 
 " Edit routes
 command! Rroutes :e config/routes.rb
@@ -414,6 +378,9 @@ map <leader>asd :!ctags -R --languages=ruby,javascript<CR>
 " Vimux
 nnoremap <leader>qp :VimuxPromptCommand<Cr>
 nnoremap <leader>qr :VimuxRunLastCommand<Cr>
+
+"remove highlight when press enter
+nnoremap <CR> :noh<CR><CR>
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
