@@ -76,4 +76,7 @@ unsetopt correct_all
 # Load nvm
 source ~/.nvm/nvm.sh
 
+# Load virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
 export PATH=$PATH:$HOME/bin
