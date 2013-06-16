@@ -15,9 +15,52 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-if filereadable(expand("~/.vim/plugins.vim"))
-  source ~/.vim/plugins.vim
-endif
+Bundle 'thisivan/vim-bufexplorer'
+Bundle 'mileszs/ack.vim'
+Bundle 'vim-scripts/YankRing.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-scripts/bufkill.vim'
+
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-endwise'
+
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'benmills/vimux'
+Bundle "ecomba/vim-ruby-refactoring"
+Bundle 'kien/ctrlp.vim'
+Bundle 'AndrewRadev/switch.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/vimshell.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'scrooloose/syntastic'
+
+" Languages
+Bundle 'nsf/gocode', {'rtp': 'vim/'}
+Bundle 'vim-scripts/VimClojure'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-haml'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'groenewege/vim-less'
+Bundle 'nono/vim-handlebars'
+Bundle 'pangloss/vim-javascript'
+Bundle 'klen/python-mode'
+
+" Colorschemes
+Bundle 'nanotech/jellybeans.vim'
 
 filetype plugin on
 filetype plugin indent on
@@ -197,17 +240,180 @@ runtime! macros/matchit.vim
 set synmaxcol=160
 let g:syntastic_javascript_checkers=['jshint']
 
-if filereadable(expand("~/.vim/filetypes.vim"))
-  source ~/.vim/filetypes.vim
+au BufNewFile,BufRead *.txt setfiletype text
+au BufNewFile,BufRead *.json set syntax=javascript ft=javascript
+au BufNewFile,BufRead *.hbs set syntax=mustache
+au BufNewFile,BufRead *.pde set filetype=c syntax=c cindent
+au BufNewFile,BufRead *.html set textwidth=999
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufEnter *.hs compiler ghc
+
+autocmd FileType text setlocal textwidth=78
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RUNNING TESTS
+" This requires vimux and tmux running
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>l :call RunTestFile()<CR>
+map <leader>L :call RunNearestTest()<CR>
+
+function! RunTestFile(...)
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  endif
+
+  " Run the tests for the previously-marked file.
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_spec.js.coffee\|_spec.coffee\)$') != -1
+  if in_test_file
+    call SetTestFile()
+  elseif !exists("t:grb_test_file")
+    return
+  end
+  call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+  let spec_line_number = line('.')
+  call RunTestFile(":" . spec_line_number)
+endfunction
+
+function! SetTestFile()
+  " Set the spec file that tests will be run for.
+  let t:grb_test_file=@%
+endfunction
+
+function! RunTests(filename)
+  " Write the file and run tests for the given filename
+  :w
+  if match(a:filename, '\.feature$') != -1
+    return RunVimTmuxCommand("script/features " . a:filename)
+  elseif match(a:filename, '\(_spec.js.coffee\|_spec.coffee\)$') != -1
+    return RunVimTmuxCommand("./node_modules/.bin/mocha " . a:filename)
+  else
+    if filereadable("script/test")
+      return RunVimTmuxCommand("script/test " . a:filename)
+    elseif filereadable("Gemfile")
+      " We assume rspec here
+      return RunVimTmuxCommand("rspec --color " . a:filename)
+    end
+  end
+endfunction
+
+set pastetoggle=<F3>
+
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! Rschema :e db/schema.rb
+
+" Press Shift+P while in visual mode to replace the selection without
+" overwriting the default register
+vmap P p :call setreg('"', getreg('0')) <CR>
+
+" Duplicate a selection
+" Visual mode: D
+vmap D y'>p
+
+" map Y to make it consistent with C and D
+nnoremap Y y$
+
+" Maps arrow key to resizing a window split
+nnoremap <left> <C-w>5>
+nnoremap <up> <C-w>5-
+nnoremap <down> <C-w>5+
+nnoremap <right> <C-w>5<
+
+" Disable arrow keys when in insert-mode
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Navigate
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprevious<CR>
+map <F1> :bnext<CR>
+map <F2> :bprevious<CR>
+map <F3> :cclose<CR>
+
+" Fugitive
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>dp :diffput<CR>
+nnoremap <leader>dg :diffget<CR>
+
+" reselect the text that was the pasted
+nnoremap <leader>v V`]
+nnoremap <silent> <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
+
+" YankRing
+nnoremap <silent> <C-p> :YRShow<cr>
+inoremap <silent> <C-p> <ESC>:YRShow<cr>
+
+" NERDTree
+nnoremap <silent><leader>nf :NERDTreeFind<CR>
+nnoremap <silent><leader>nt :NERDTreeToggle<CR>
+
+" OS-X like space for scroll
+nnoremap <Space> <C-F>
+
+" Backspace closes buffer.
+nnoremap <BS> :BD<CR>
+nnoremap <S-BS> :bd<CR>
+
+" CTags
+map <C-\> :tnext<CR>
+
+" Ack
+map <leader>f :Ack!<space>
+
+" NERDCommenter
+map <leader>/ <plug>NERDCommenterToggle<CR>
+
+" Tabular
+if exists(":Tabularize")
+  noremap <leader>t= :Tabularize /=
+  noremap <leader>t> :Tabularize /=>
+  noremap <leader>t: :Tabularize /:\zs
+  noremap <leader>ts :Tabularize /:/l1c0l0
+  noremap <leader>t{ :Tabularize /{
 endif
 
-if filereadable(expand("~/.vim/keymaps.vim"))
-  source ~/.vim/keymaps.vim
-endif
+" Rails
+noremap <leader>a :A<CR>
+noremap <leader>av :AV<CR>
+noremap <leader>re :R<CR>
+noremap <leader>rv :RV<CR>
+noremap <leader>rm :Rmodel
+noremap <leader>rc :Rcontroller
 
-if filereadable(expand("~/.vim/functions.vim"))
-  source ~/.vim/functions.vim
-endif
+"Switch
+nnoremap - :Switch<cr>
+
+" Insert hashrocket
+imap <C-L> <Space>=><Space>
+
+" CtrlP
+noremap <leader>m :CtrlPCurWD<CR>
+let g:ctrlp_map = "<leader><leader>"
+
+" Rebuilt tags
+map <leader>asd :!ctags -R --languages=ruby,javascript<CR>
+
+" Vimux
+nnoremap <leader>qp :VimuxPromptCommand<Cr>
+nnoremap <leader>qr :VimuxRunLastCommand<Cr>
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
