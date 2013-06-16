@@ -17,7 +17,7 @@ Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 
-Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'benmills/vimux'
 Bundle "ecomba/vim-ruby-refactoring"
 Bundle 'kien/ctrlp.vim'
@@ -36,11 +36,6 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
-" Require http://pypi.python.org/pypi/flake8/ to be installed
-Bundle 'nvie/vim-flake8'
 
 " Colorschemes
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'altercation/vim-colors-solarized'
