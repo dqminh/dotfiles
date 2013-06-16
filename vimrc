@@ -29,7 +29,13 @@ syntax on
 set backspace=indent,eol,start
 
 " Use system clipboard
-set clipboard+=unnamed
+" Writes to the unnamed register also writes to the * and + registers. This
+" makes it easy to interact with the system clipboard
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 set number                     " Show line number
 set encoding=utf-8             " Enable utf-8 encoding by default
