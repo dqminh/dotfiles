@@ -37,6 +37,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
+Bundle 'klen/python-mode'
 
 " Colorschemes
 Bundle 'nanotech/jellybeans.vim'
