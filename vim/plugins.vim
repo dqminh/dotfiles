@@ -25,6 +25,8 @@ Bundle 'AndrewRadev/switch.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'scrooloose/syntastic'
 
 " Languages
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
