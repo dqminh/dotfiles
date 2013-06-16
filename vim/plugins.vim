@@ -23,6 +23,7 @@ Bundle "ecomba/vim-ruby-refactoring"
 Bundle 'kien/ctrlp.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
+Bundle 'Shougo/vimshell.vim'
 
 " Languages
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
