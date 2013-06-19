@@ -32,7 +32,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/syntastic'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'vim-scripts/VimClojure'
 Bundle 'jnwhiteh/vim-golang'
