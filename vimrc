@@ -17,7 +17,6 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
@@ -32,9 +31,7 @@ Bundle "ecomba/vim-ruby-refactoring"
 Bundle 'kien/ctrlp.vim'
 Bundle 'AndrewRadev/switch.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'Shougo/unite.vim'
+Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/syntastic'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'vim-scripts/VimClojure'
@@ -149,7 +146,6 @@ let ruby_no_expensive=1
 "CtrlP
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_max_height = 20
-let g:ctrlp_extensions = ['tag', 'line', 'buffertag']
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 let g:ctrlp_cmd = 'CtrlPLastMode'
 
