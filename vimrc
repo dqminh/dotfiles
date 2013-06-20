@@ -22,25 +22,20 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'ervandew/supertab'
 Bundle 'benmills/vimux'
-Bundle "ecomba/vim-ruby-refactoring"
 Bundle 'kien/ctrlp.vim'
-Bundle 'AndrewRadev/switch.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'scrooloose/syntastic'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
-Bundle 'vim-scripts/VimClojure'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-haml'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'groenewege/vim-less'
 Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
 Bundle 'klen/python-mode'
@@ -123,21 +118,15 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,*.pyc,.svn
 " Tags
 set tags=./tags;
 
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
+" Supertab
+" Let omnifunc and completefunc take precendence
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " NERDTree
 let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$', '\docs' , '\htmlcov']
 let NERDTreeHighlightCursorline=1
 let NERDTreeChDirMode = 2
-
-" Clojure
-let vimclojure#HighlightBuiltins=1
 
 " vim-ruby
 let ruby_no_expensive=1
@@ -167,18 +156,7 @@ let g:Powerline_symbols = 'fancy'
 let g:VimuxHeight = 10
 let VimuxUseNearestPane = 1
 
-" Rails projection
-let g:rails_gem_projects = {
-      \ "active_model_serializers": {
-      \   "app/serializers/*_serializer.rb": {
-      \     "command": "serializer",
-      \     "affinity": "model"}},
-      \ "factory": {
-      \   "spec/factories/*_factory.rb": {
-      \     "command": "factory",
-      \     "affinity": "model",
-      \     "alternate": "app/models/%s.rb"}}}
-
+" Syntastic
 let g:syntastic_javascript_checkers=['jshint']
 
 " Theme
@@ -187,6 +165,17 @@ set ttyfast
 set background=dark
 set lazyredraw
 set synmaxcol=160 " not slow when highlight long line
+set statusline=
+"display a warning if &paste is set
+set statusline+=%#error#
+set statusline+=%{&paste?'[paste]':''}
+set statusline+=%*
+set statusline +=%1*\ %n\ %*  "buffer number
+set statusline +=%4*\ %<%F%* "full path
+set statusline +=%2*%m%*     "modified flag
+set statusline +=%1*%=%5l%*  "current line
+set statusline +=%2*/%L%*    "total lines
+set statusline +=%1*%4v\ %*  "virtual column number
 colorscheme jellybeans
 
 " % to bounce from do to end etc.
@@ -259,7 +248,7 @@ nnoremap <silent><leader>nt :NERDTreeToggle<CR>
 nnoremap <Space> <C-F>
 
 " Backspace closes buffer.
-nnoremap <BS> :BD<CR>
+nnoremap <BS> :close<CR>
 nnoremap <S-BS> :bd<CR>
 
 " CTags
@@ -270,26 +259,6 @@ map <leader>f :Ack!<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
-
-" Tabular
-if exists(":Tabularize")
-  noremap <leader>t= :Tabularize /=
-  noremap <leader>t> :Tabularize /=>
-  noremap <leader>t: :Tabularize /:\zs
-  noremap <leader>ts :Tabularize /:/l1c0l0
-  noremap <leader>t{ :Tabularize /{
-endif
-
-" Rails
-noremap <leader>a :A<CR>
-noremap <leader>av :AV<CR>
-noremap <leader>re :R<CR>
-noremap <leader>rv :RV<CR>
-noremap <leader>rm :Rmodel
-noremap <leader>rc :Rcontroller
-
-"Switch
-nnoremap - :Switch<cr>
 
 " Insert hashrocket
 imap <C-L> <Space>=><Space>
@@ -327,61 +296,37 @@ au BufNewFile,BufRead *.pde set filetype=c syntax=c cindent
 au BufNewFile,BufRead *.html set textwidth=999
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
 au BufEnter *.hs compiler ghc
-
-autocmd FileType text setlocal textwidth=78
+au FileType text setlocal textwidth=78
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+au FileType python setlocal omnifunc=pythoncomplete#Complete
+au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+au FileType ruby setlocal omnifunc=rubycomplete#Complete
 
+"http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
+"hacks from above (the url, not jesus) to delete fugitive buffers when we
+"leave them - otherwise the buffer list gets poluted
+"
+"add a mapping on .. to view parent tree
+au BufReadPost fugitive://* set bufhidden=delete
+au BufReadPost fugitive://*
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
 
-"------------------------------------------------------------------------------
-" FUNCTIONS
-"------------------------------------------------------------------------------
-function! RunTestFile(...)
-  if a:0
-    let command_suffix = a:1
-  else
-    let command_suffix = ""
-  endif
-
-  " Run the tests for the previously-marked file.
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_spec.js.coffee\|_spec.coffee\)$') != -1
-  if in_test_file
-    call SetTestFile()
-  elseif !exists("t:grb_test_file")
-    return
-  end
-  call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-  let spec_line_number = line('.')
-  call RunTestFile(":" . spec_line_number)
-endfunction
-
-function! SetTestFile()
-  " Set the spec file that tests will be run for.
-  let t:grb_test_file=@%
-endfunction
-
-function! RunTests(filename)
-  " Write the file and run tests for the given filename
-  :w
-  if match(a:filename, '\.feature$') != -1
-    return RunVimTmuxCommand("script/features " . a:filename)
-  elseif match(a:filename, '\(_spec.js.coffee\|_spec.coffee\)$') != -1
-    return RunVimTmuxCommand("./node_modules/.bin/mocha " . a:filename)
-  else
-    if filereadable("script/test")
-      return RunVimTmuxCommand("script/test " . a:filename)
-    elseif filereadable("Gemfile")
-      " We assume rspec here
-      return RunVimTmuxCommand("rspec --color " . a:filename)
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" dont do it when writing a commit log entry
+autocmd BufReadPost * call SetCursorPosition()
+function! SetCursorPosition()
+    if &filetype !~ 'svn\|commit\c'
+        if line("'\"") > 0 && line("'\"") <= line("$")
+            exe "normal! g`\""
+            normal! zz
+        endif
     end
-  end
 endfunction
