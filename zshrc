@@ -27,8 +27,8 @@ alias edit_vim_keymap='vim ~/.vim/keymaps.vim'
 alias edit_vim_config='vim ~/.vimrc'
 alias z='. ~/bin/z/z.sh'
 alias j='z'
-alias mn='tmux new -s'
-alias mt='tmux a -t'
+alias muxn='tmux new -s'
+alias muxt='tmux a -t'
 alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'
 
 # Customize to your needs...
@@ -81,3 +81,4 @@ source ~/.nvm/nvm.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/workspace/chromium/depot_tools
