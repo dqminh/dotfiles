@@ -31,13 +31,18 @@ function! RunTests(filename)
   if match(a:filename, '\.feature$') != -1
     return RunVimTmuxCommand("script/features " . a:filename)
   elseif match(a:filename, '\(_spec.js.coffee\|_spec.coffee\)$') != -1
-    return RunVimTmuxCommand("./node_modules/.bin/mocha " . a:filename)
+    return VimuxRunCommand("./node_modules/.bin/mocha " . a:filename)
+    
   else
     if filereadable("script/test")
-      return RunVimTmuxCommand("script/test " . a:filename)
+      return VimuxRunCommand("script/test " . a:filename)
     elseif filereadable("Gemfile")
       " We assume rspec here
-      return RunVimTmuxCommand("rspec --color " . a:filename)
+      if executable("zeus") == 1
+        return VimuxRunCommand("zeus rspec " . a:filename)
+      else
+        return VimuxRunCommand("rspec --color " . a:filename)
+      endif
     end
   end
 endfunction
