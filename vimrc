@@ -9,8 +9,8 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'thisivan/vim-bufexplorer'
-Bundle 'mileszs/ack.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
@@ -26,8 +26,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
 Bundle 'benmills/vimux'
-Bundle 'kien/ctrlp.vim'
-Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'scrooloose/syntastic'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'jnwhiteh/vim-golang'
@@ -130,15 +128,8 @@ let NERDTreeChDirMode = 2
 
 " vim-ruby
 let ruby_no_expensive=1
-
-"CtrlP
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-let g:ctrlp_max_height = 20
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_cmd = 'CtrlPLastMode'
-
-"Ack.vim
-let g:ackprg="ag -i --nocolor --nogroup --column"
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_rails = 1
 
 " Remove whitespace on save
 autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -161,9 +152,7 @@ let g:syntastic_javascript_checkers=['jshint']
 
 " Theme
 let g:Powerline_symbols = 'fancy'
-set ttyfast
 set background=dark
-set lazyredraw
 set synmaxcol=160 " not slow when highlight long line
 set statusline=
 "display a warning if &paste is set
@@ -205,7 +194,7 @@ vmap D y'>p
 " map Y to make it consistent with C and D
 nnoremap Y y$
 
-" Maps arrow key to resizing a window split
+" Maps arrow key resize
 nnoremap <left> <C-w>5>
 nnoremap <up> <C-w>5-
 nnoremap <down> <C-w>5+
@@ -223,6 +212,8 @@ nnoremap <leader>cp :cprevious<CR>
 map <F1> :bnext<CR>
 map <F2> :bprevious<CR>
 map <F3> :cclose<CR>
+map <leader>av :AV<CR>
+map <leader>a :A<CR>
 
 " Fugitive
 nnoremap <leader>gb :Gblame<CR>
@@ -243,13 +234,6 @@ inoremap <silent> <C-p> <ESC>:YRShow<cr>
 " NERDTree
 nnoremap <silent><leader>nf :NERDTreeFind<CR>
 nnoremap <silent><leader>nt :NERDTreeToggle<CR>
-
-" OS-X like space for scroll
-nnoremap <Space> <C-F>
-
-" Backspace closes buffer.
-nnoremap <BS> :close<CR>
-nnoremap <S-BS> :bd<CR>
 
 " CTags
 map <C-\> :tnext<CR>
@@ -281,6 +265,30 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap + <c-a>
 nnoremap - <c-x>
 
+" Unite settings
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_grep_max_candidates = 100
+" Use ag in unite grep source.
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+let g:unite_source_grep_recursive_opt = ''
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" <leader>be will open buffer
+nnoremap <leader>be :Unite -no-split -buffer-name=buffer -select=0 buffer<cr>
+" double leader will find files
+nnoremap <leader><leader> :Unite -no-split -buffer-name=files -start-insert file_rec/async:!<cr>
+" find with normal ag
+nnoremap <leader>f :Unite grep:.<cr>
+" find word under cursor
+nnoremap <leader>g :Unite grep:.::<C-r><C-w><cr>
+
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  let b:SuperTabDisabled=1
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
@@ -295,7 +303,6 @@ au BufNewFile,BufRead *.hbs set syntax=mustache
 au BufNewFile,BufRead *.pde set filetype=c syntax=c cindent
 au BufNewFile,BufRead *.html set textwidth=999
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-au BufEnter *.hs compiler ghc
 au FileType text setlocal textwidth=78
 
 " Enable omni completion.
@@ -306,27 +313,12 @@ au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 au FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-"http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
-"hacks from above (the url, not jesus) to delete fugitive buffers when we
-"leave them - otherwise the buffer list gets poluted
-"
-"add a mapping on .. to view parent tree
+" http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
+" hacks from above (the url, not jesus) to delete fugitive buffers when we
+" leave them - otherwise the buffer list gets poluted
+" add a mapping on .. to view parent tree
 au BufReadPost fugitive://* set bufhidden=delete
 au BufReadPost fugitive://*
   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" dont do it when writing a commit log entry
-autocmd BufReadPost * call SetCursorPosition()
-function! SetCursorPosition()
-    if &filetype !~ 'svn\|commit\c'
-        if line("'\"") > 0 && line("'\"") <= line("$")
-            exe "normal! g`\""
-            normal! zz
-        endif
-    end
-endfunction
