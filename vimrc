@@ -2,6 +2,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 set encoding=utf-8
+
 "------------------------------------------------------------------------------
 " BUNDLES
 "------------------------------------------------------------------------------
@@ -14,7 +15,6 @@ Bundle 'Shougo/unite.vim'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/bufkill.vim'
@@ -92,6 +92,17 @@ set hidden
 set laststatus=2
 set number " Show line number
 set numberwidth=5 "Max number is 99999
+" Automatically resize vertical splits.
+au WinEnter * :set winfixheight
+au WinEnter * :wincmd =
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" Time out on key codes but not mappings.
+" Basically this makes terminal Vim work sanely.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 
 if has('cmdline_info')
   set ruler
@@ -118,30 +129,20 @@ set tags=./tags;
 
 " Supertab
 " Let omnifunc and completefunc take precendence
+set complete-=i
+set completeopt=menu,menuone,longest " no scratch
+set iskeyword+=- " do not use - as a word separator
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
-" NERDTree
-let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$', '\docs' , '\htmlcov']
-let NERDTreeHighlightCursorline=1
-let NERDTreeChDirMode = 2
-
 " vim-ruby
+Bundle 'int3/vim-extradite'
 let ruby_no_expensive=1
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
 
 " Remove whitespace on save
 autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-" Autocomplete
-" Enable omni completion.
-set complete-=i
-set completeopt=menu,menuone,longest " no scratch
-set iskeyword+=- " do not use - as a word separator
-
-" Powerline
-let g:Powerline_symbols = 'fancy'
 
 " Vimux
 let g:VimuxHeight = 10
@@ -151,24 +152,33 @@ let VimuxUseNearestPane = 1
 let g:syntastic_javascript_checkers=['jshint']
 
 " Theme
-let g:Powerline_symbols = 'fancy'
 set background=dark
 set synmaxcol=160 " not slow when highlight long line
-set statusline=
-"display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-set statusline +=%1*\ %n\ %*  "buffer number
-set statusline +=%4*\ %<%F%* "full path
-set statusline +=%2*%m%*     "modified flag
-set statusline +=%1*%=%5l%*  "current line
-set statusline +=%2*/%L%*    "total lines
-set statusline +=%1*%4v\ %*  "virtual column number
 colorscheme jellybeans
+
+" Status line
+hi statusline ctermfg=10 ctermbg=18
+set statusline=
+""display a warning if &paste is set
+set statusline+=%#error#%{&paste?'[paste]':''}%*
+set statusline+=%*\ %<%F%* "full path
+set statusline+=%*%=%5l%*  "current line
+set statusline+=%*/%L%*    "total lines
+set statusline+=%*%4v\ %*  "virtual column number
+function! ActiveStatus()
+  hi statusline ctermfg=10 ctermbg=18
+endfunction
+function! InactiveStatus()
+  hi statusline ctermfg=5 ctermbg=0
+endfunction
+au WinEnter * call ActiveStatus()
+au WinLeave * call InactiveStatus()
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
+
+" Autoreload vimrc
+autocmd! bufwritepost vimrc source %
 
 "------------------------------------------------------------------------------
 " KEYMAPS
@@ -182,6 +192,12 @@ nnoremap <silent> <Leader>1 :set paste!<cr>
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
+
+" Kill buffer
+nnoremap K :BD<cr>
+
+" Unfuck my screen
+nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
 
 " Press Shift+P while in visual mode to replace the selection without
 " overwriting the default register
@@ -206,18 +222,22 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" Quickfix
+nmap <leader>c :copen<cr>
+nmap <leader>e :Errors<cr>
+nmap <leader>C :cclose<cr>
+nmap <leader>cn :cnext<CR>
+nmap <leader>cp :cprevious<CR>
+
 " Navigate
-nnoremap <leader>cn :cnext<CR>
-nnoremap <leader>cp :cprevious<CR>
 map <F1> :bnext<CR>
 map <F2> :bprevious<CR>
-map <F3> :cclose<CR>
-map <leader>av :AV<CR>
-map <leader>a :A<CR>
+nmap <leader>av :AV<CR>
+nmap <leader>a :A<CR>
 
 " Fugitive
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gl :Extradite<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>dp :diffput<CR>
@@ -230,10 +250,6 @@ nnoremap <silent> <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl
 " YankRing
 nnoremap <silent> <C-p> :YRShow<cr>
 inoremap <silent> <C-p> <ESC>:YRShow<cr>
-
-" NERDTree
-nnoremap <silent><leader>nf :NERDTreeFind<CR>
-nnoremap <silent><leader>nt :NERDTreeToggle<CR>
 
 " CTags
 map <C-\> :tnext<CR>
@@ -273,10 +289,11 @@ let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt = ''
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 " <leader>be will open buffer
-nnoremap <leader>be :Unite -no-split -buffer-name=buffer -select=0 buffer<cr>
+nnoremap <leader>be :<C-u>Unite -no-split -buffer-name=buffer -select=1 buffer<cr>
 " double leader will find files
-nnoremap <leader><leader> :Unite -no-split -buffer-name=files -start-insert file_rec/async:!<cr>
+nnoremap <leader><leader> :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async:!<cr>
 " find with normal ag
 nnoremap <leader>f :Unite grep:.<cr>
 " find word under cursor
@@ -287,6 +304,7 @@ function! s:unite_settings()
   let b:SuperTabDisabled=1
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+  imap <buffer> <C-c>   <Plug>(unite_exit)
 endfunction
 
 if filereadable(expand("~/.vimrc.local"))
@@ -322,3 +340,12 @@ au BufReadPost fugitive://*
   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
+
+" Make sure Vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
