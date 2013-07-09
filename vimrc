@@ -10,15 +10,18 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+Bundle 'int3/vim-extradite'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-surround'
@@ -92,9 +95,6 @@ set hidden
 set laststatus=2
 set number " Show line number
 set numberwidth=5 "Max number is 99999
-" Automatically resize vertical splits.
-au WinEnter * :set winfixheight
-au WinEnter * :wincmd =
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
@@ -136,7 +136,6 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " vim-ruby
-Bundle 'int3/vim-extradite'
 let ruby_no_expensive=1
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_rails = 1
@@ -234,6 +233,12 @@ map <F1> :bnext<CR>
 map <F2> :bprevious<CR>
 nmap <leader>av :AV<CR>
 nmap <leader>a :A<CR>
+
+" Nerdtree
+let NERDTreeMinimalUI=1
+let NERDTREEWinSize=30
+nmap <silent><leader>nt :NERDTreeToggle<CR>
+nmap <silent><leader>nf :NERDTreeFind<CR>
 
 " Fugitive
 nnoremap <leader>gb :Gblame<CR>
