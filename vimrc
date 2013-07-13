@@ -11,8 +11,10 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'int3/vim-extradite'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/unite.vim'
+Bundle 'thisivan/vim-bufexplorer'
+Bundle 'rking/ag.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
@@ -260,7 +262,7 @@ inoremap <silent> <C-p> <ESC>:YRShow<cr>
 map <C-\> :tnext<CR>
 
 " Ack
-map <leader>f :Ack!<space>
+map <leader>f :Ag!<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
@@ -286,31 +288,10 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap + <c-a>
 nnoremap - <c-x>
 
-" Unite settings
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_grep_max_candidates = 100
-" Use ag in unite grep source.
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
-let g:unite_source_grep_recursive_opt = ''
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-" <leader>be will open buffer
-nnoremap <leader>be :<C-u>Unite -no-split -buffer-name=buffer -select=1 buffer<cr>
-" double leader will find files
-nnoremap <leader><leader> :<C-u>Unite -no-split -buffer-name=files -start-insert file_rec/async:!<cr>
-" find with normal ag
-nnoremap <leader>f :Unite grep:.<cr>
-" find word under cursor
-nnoremap <leader>g :Unite grep:.::<C-r><C-w><cr>
-
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  let b:SuperTabDisabled=1
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  imap <buffer> <C-c>   <Plug>(unite_exit)
-endfunction
+" Ctrlp Settings
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:ctrlp_max_height = 20
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
@@ -335,6 +316,7 @@ au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 au FileType ruby setlocal omnifunc=rubycomplete#Complete
+au FileType yaml setlocal syntax=off
 
 " http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 " hacks from above (the url, not jesus) to delete fugitive buffers when we
