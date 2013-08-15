@@ -27,8 +27,8 @@ alias edit_vim_keymap='vim ~/.vim/keymaps.vim'
 alias edit_vim_config='vim ~/.vimrc'
 alias z='. ~/bin/z/z.sh'
 alias j='z'
-alias muxn='tmux new -s'
-alias muxt='tmux a -t'
+alias tn='tmux new -s'
+alias ta='tmux a -t'
 alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'
 
 # Customize to your needs...

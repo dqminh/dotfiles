@@ -234,7 +234,7 @@ nmap <leader>cp :cprevious<CR>
 map <F1> :bnext<CR>
 map <F2> :bprevious<CR>
 nmap <leader>av :AV<CR>
-nmap <leader>a :A<CR>
+nmap <leader>aa :A<CR>
 
 " Nerdtree
 let NERDTreeMinimalUI=1
@@ -262,7 +262,7 @@ inoremap <silent> <C-p> <ESC>:YRShow<cr>
 map <C-\> :tnext<CR>
 
 " Ack
-map <leader>f :Ag!<space>
+map <leader>f :Ag! -i<space>
 
 " NERDCommenter
 map <leader>/ <plug>NERDCommenterToggle<CR>
@@ -306,6 +306,7 @@ au BufNewFile,BufRead *.json set syntax=javascript ft=javascript
 au BufNewFile,BufRead *.hbs set syntax=mustache
 au BufNewFile,BufRead *.pde set filetype=c syntax=c cindent
 au BufNewFile,BufRead *.html set textwidth=999
+au BufNewFile,BufRead {Dockerfile} setlocal wrap linebreak nolist textwidth=78 syntax=off
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
 au FileType text setlocal textwidth=78
 
