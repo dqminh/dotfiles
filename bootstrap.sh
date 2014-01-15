@@ -41,18 +41,21 @@ else
   mkdir -p .ssh
   mkdir -p .config/fish
 
-  ln -s /home/$USER_NAME/.dotfiles/ackrc /home/$USERNAME/.ackrc
-  ln -s /home/$USER_NAME/.dotfiles/tmux.conf /home/$USERNAME/.tmux.conf
-  ln -s /home/$USER_NAME/.dotfiles/vim /home/$USERNAME/.vim
-  ln -s /home/$USER_NAME/.dotfiles/vimrc /home/$USERNAME/.vimrc
-  ln -s /home/$USER_NAME/.dotfiles/ctags /home/$USERNAME/.ctags
-  ln -s /home/$USER_NAME/.dotfiles/gitconfig /home/$USERNAME/.gitconfig
-  ln -s /home/$USER_NAME/.dotfiles/gitignore_global /home/$USERNAME/.gitignore_global
-  ln -s /home/$USER_NAME/.dotfiles/config.fish /home/$USERNAME/.config/fish/config.fish
+  ln -sf /home/$USER_NAME/.dotfiles/ackrc /home/$USERNAME/.ackrc
+  ln -sf /home/$USER_NAME/.dotfiles/tmux.conf /home/$USERNAME/.tmux.conf
+  ln -sf /home/$USER_NAME/.dotfiles/vim /home/$USERNAME/.vim
+  ln -sf /home/$USER_NAME/.dotfiles/vimrc /home/$USERNAME/.vimrc
+  ln -sf /home/$USER_NAME/.dotfiles/ctags /home/$USERNAME/.ctags
+  ln -sf /home/$USER_NAME/.dotfiles/gitconfig /home/$USERNAME/.gitconfig
+  ln -sf /home/$USER_NAME/.dotfiles/gitignore_global /home/$USERNAME/.gitignore_global
+  ln -sf /home/$USER_NAME/.dotfiles/config.fish /home/$USERNAME/.config/fish/config.fish
 fi
 
 
 if [ -f "/home/$USER_NAME/.vim/bundle/vundle" ]
+  echo "vundle already installed"
+then
+else
   git clone https://github.com/gmarik/vundle.git /home/$USERNAME/.vim/bundle/vundle
-  vim +BundleInstall +qall
 fi
+vim +BundleInstall +qall
