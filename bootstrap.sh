@@ -2,7 +2,7 @@ export USER_NAME=$1
 
 cd /home/$USER_NAME
 
-if [ -d "/usr/local/bin/ag" ]
+if [ -f "/usr/local/bin/ag" ]
 then
   echo "ag already installed..."
 else
@@ -11,7 +11,7 @@ else
   ./build.sh && make install
 fi
 
-if [ -d "/usr/local/bin/fish" ]
+if [ -f "/usr/local/bin/fish" ]
 then
   echo "Fish already installed..."
 else
@@ -23,9 +23,8 @@ else
   chsh -s /usr/local/bin/fish
 fi
 
-cd /home/$USER_NAME
-mkdir -p .ssh
-mkdir -p .config/fish
+mkdir -p /home/$USER_NAME/.ssh
+mkdir -p /home/$USER_NAME/.config/fish
 
 ln -sf /home/$USER_NAME/.dotfiles/ackrc /home/$USER_NAME/.ackrc
 ln -sf /home/$USER_NAME/.dotfiles/tmux.conf /home/$USER_NAME/.tmux.conf
@@ -37,7 +36,7 @@ ln -sf /home/$USER_NAME/.dotfiles/gitignore_global /home/$USER_NAME/.gitignore_g
 ln -sf /home/$USER_NAME/.dotfiles/config.fish /home/$USER_NAME/.config/fish/config.fish
 
 
-if [ -f "/home/$USER_NAME/.vim/bundle/vundle" ]
+if [ -d "/home/$USER_NAME/.vim/bundle/vundle" ]
 then
   echo "vundle already installed"
 else
