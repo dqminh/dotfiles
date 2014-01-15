@@ -9,6 +9,13 @@ apt-get upgrade -y
 export USERNAME=$1
 
 apt-get install -y \
+  automake \
+  pkg-config \
+  libpcre3-dev \
+  zlib1g-dev \
+  liblzma-dev
+
+apt-get install -y \
   wget \
   curl \
   tmux \

@@ -1,5 +1,26 @@
 cd /home/$USERNAME
 
+if [ -d "/usr/local/bin/ag" ]
+then
+  echo "ag already installed..."
+else
+  git clone https://github.com/ggreer/the_silver_searcher.git
+  cd the_silver_searcher
+  ./build.sh && make install
+fi
+
+if [ -d "/usr/local/bin/fish" ]
+then
+  echo "Fish already installed..."
+else
+  wget http://fishshell.com/files/2.1.0/fish-2.1.0.tar.gz
+  tar -zxf fish-2.1.0.tar.gz && cd fish-2.1.0
+  ./configure --prefix=/usr/local
+  make && make install
+  echo '/usr/local/bin/fish' | tee -a /etc/shells
+  chsh -s /usr/local/bin/fish
+fi
+
 if [ -d "/usr/local/bin/fish" ]
 then
   echo "Fish already installed..."

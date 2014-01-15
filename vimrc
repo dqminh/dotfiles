@@ -14,7 +14,6 @@ Bundle 'int3/vim-extradite'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
@@ -31,7 +30,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'ervandew/supertab'
 Bundle 'benmills/vimux'
-Bundle 'scrooloose/syntastic'
 Bundle 'nsf/gocode', {'rtp': 'vim/'}
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'vim-ruby/vim-ruby'
@@ -43,6 +41,7 @@ Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
 Bundle 'klen/python-mode'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'dgryski/vim-godef'
 filetype plugin on
 filetype plugin indent on
 syntax on
@@ -291,7 +290,9 @@ nnoremap - <c-x>
 " Ctrlp Settings
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_max_height = 20
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+
+" godef
+let g:godef_split=2
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
