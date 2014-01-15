@@ -1,4 +1,6 @@
-cd /home/$USERNAME
+export USER_NAME=$1
+
+cd /home/$USER_NAME
 
 if [ -d "/usr/local/bin/ag" ]
 then
@@ -41,14 +43,14 @@ else
   mkdir -p .ssh
   mkdir -p .config/fish
 
-  ln -sf /home/$USER_NAME/.dotfiles/ackrc /home/$USERNAME/.ackrc
-  ln -sf /home/$USER_NAME/.dotfiles/tmux.conf /home/$USERNAME/.tmux.conf
-  ln -sf /home/$USER_NAME/.dotfiles/vim /home/$USERNAME/.vim
-  ln -sf /home/$USER_NAME/.dotfiles/vimrc /home/$USERNAME/.vimrc
-  ln -sf /home/$USER_NAME/.dotfiles/ctags /home/$USERNAME/.ctags
-  ln -sf /home/$USER_NAME/.dotfiles/gitconfig /home/$USERNAME/.gitconfig
-  ln -sf /home/$USER_NAME/.dotfiles/gitignore_global /home/$USERNAME/.gitignore_global
-  ln -sf /home/$USER_NAME/.dotfiles/config.fish /home/$USERNAME/.config/fish/config.fish
+  ln -sf /home/$USER_NAME/.dotfiles/ackrc /home/$USER_NAME/.ackrc
+  ln -sf /home/$USER_NAME/.dotfiles/tmux.conf /home/$USER_NAME/.tmux.conf
+  ln -sf /home/$USER_NAME/.dotfiles/vim /home/$USER_NAME/.vim
+  ln -sf /home/$USER_NAME/.dotfiles/vimrc /home/$USER_NAME/.vimrc
+  ln -sf /home/$USER_NAME/.dotfiles/ctags /home/$USER_NAME/.ctags
+  ln -sf /home/$USER_NAME/.dotfiles/gitconfig /home/$USER_NAME/.gitconfig
+  ln -sf /home/$USER_NAME/.dotfiles/gitignore_global /home/$USER_NAME/.gitignore_global
+  ln -sf /home/$USER_NAME/.dotfiles/config.fish /home/$USER_NAME/.config/fish/config.fish
 fi
 
 
@@ -56,6 +58,6 @@ if [ -f "/home/$USER_NAME/.vim/bundle/vundle" ]
   echo "vundle already installed"
 then
 else
-  git clone https://github.com/gmarik/vundle.git /home/$USERNAME/.vim/bundle/vundle
+  git clone https://github.com/gmarik/vundle.git /home/$USER_NAME/.vim/bundle/vundle
 fi
 vim +BundleInstall +qall

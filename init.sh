@@ -6,7 +6,7 @@
 apt-get update
 apt-get upgrade -y
 
-export USERNAME=$1
+export USER_NAME=$1
 
 apt-get install -y \
   automake \
@@ -25,4 +25,4 @@ apt-get install -y \
 
 git clone https://github.com/dqminh/dotfiles $HOME/.dotfiles
 cd $HOME/.dotfiles
-./bootstrap.sh
+./bootstrap.sh $USER_NAME
