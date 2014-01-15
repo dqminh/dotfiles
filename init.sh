@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # To be used on ubuntu
-# ssh user@host "wget raw.github.com/dqminh/.dotfiles/master/init.sh && chmod +x init.sh && sudo ./init.sh user"
+# ssh user@host "wget raw.github.com/dqminh/dotfiles/master/init.sh && chmod +x init.sh && sudo ./init.sh user"
 
 apt-get update
 apt-get upgrade -y
