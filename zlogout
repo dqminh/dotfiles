@@ -1,8 +1,0 @@
-#
-# Executes commands at logout.
-
-# Print the message.
-cat <<-EOF
-
-Thank you. Come again!
-EOF
