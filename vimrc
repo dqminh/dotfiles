@@ -42,6 +42,7 @@ Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
 Bundle 'klen/python-mode'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'dgryski/vim-godef'
 filetype plugin on
 filetype plugin indent on
 syntax on
@@ -286,6 +287,9 @@ nnoremap <CR> :noh<CR><CR>
 " +/-: Increment number
 nnoremap + <c-a>
 nnoremap - <c-x>
+
+" Godef
+let g:godef_split=0
 
 " Ctrlp Settings
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']

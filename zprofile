@@ -5,3 +5,4 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+source /etc/profile

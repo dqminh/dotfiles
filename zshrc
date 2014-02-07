@@ -39,10 +39,8 @@ export LC_ALL=en_US.UTF-8
 # PATHS
 export NODE_PATH=/usr/local/lib/node_modules
 export GOPATH=$HOME/gocode:$GOPATH
-export GOBIN=$GOPATH/bin:$GOBIN
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOBIN
+export GOBIN=$HOME/gocode/bin
+export PATH=$GOBIN:$PATH
 
 export JRUBY_OPTS='--1.9'
 export RLWRAP=`which rlwrap`
@@ -53,4 +51,8 @@ unsetopt correct_all
 # Load nvm
 source ~/.nvm/nvm.sh
 
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
+
+# bash style delete word
+autoload -U select-word-style
+select-word-style bash
