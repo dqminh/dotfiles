@@ -154,7 +154,7 @@ let g:syntastic_javascript_checkers=['jshint']
 
 " Theme
 set background=dark
-set synmaxcol=160 " not slow when highlight long line
+set synmaxcol=500 " not slow when highlight long line
 colorscheme jellybeans
 
 " Status line
