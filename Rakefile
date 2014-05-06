@@ -30,6 +30,14 @@ task :install do
       link_file(file)
     end
   end
+
+  `git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+end
+
+desc "install golang dev dependencies"
+task :godeps do
+  `go get -u github.com/nsf/gocode`
+  `go get -u code.google.com/p/go.tools/cmd/goimports`
 end
 
 def replace_file(file)
