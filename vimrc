@@ -7,9 +7,9 @@ set encoding=utf-8
 " BUNDLES
 "------------------------------------------------------------------------------
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Bundle 'gmarik/Vundle.vim'
 Bundle 'int3/vim-extradite'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'rking/ag.vim'
@@ -42,9 +42,10 @@ Bundle 'nono/vim-handlebars'
 Bundle 'pangloss/vim-javascript'
 Bundle 'klen/python-mode'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'dgryski/vim-godef'
-filetype plugin on
-filetype plugin indent on
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 syntax on
 
 let mapleader = ","
@@ -288,8 +289,8 @@ nnoremap <CR> :noh<CR><CR>
 nnoremap + <c-a>
 nnoremap - <c-x>
 
-" Godef
-let g:godef_split=0
+" Goimport
+let g:gofmt_command = "goimports"
 
 " Ctrlp Settings
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
