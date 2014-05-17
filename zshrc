@@ -29,6 +29,7 @@ alias z='. ~/bin/z/z.sh'
 alias j='z'
 alias tn='tmux new -s'
 alias ta='tmux a -t'
+alias tl='tmux list-sessions'
 alias nw='/Applications/node-webkit.app/Contents/MacOS/node-webkit'
 
 # Customize to your needs...
