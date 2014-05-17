@@ -41,6 +41,7 @@ export NODE_PATH=/usr/local/lib/node_modules
 export GOPATH=$HOME/gocode:$GOPATH
 export GOBIN=$HOME/gocode/bin
 export PATH=$GOBIN:$PATH
+export PATH=/opt/packer:$PATH
 
 export JRUBY_OPTS='--1.9'
 export RLWRAP=`which rlwrap`
