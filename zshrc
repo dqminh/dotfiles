@@ -57,3 +57,5 @@ export PATH=$HOME/bin:$PATH
 # bash style delete word
 autoload -U select-word-style
 select-word-style bash
+
+source ~/.autoenv/activate.sh
