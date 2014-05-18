@@ -4,5 +4,8 @@ setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftround
 setlocal shiftwidth=4
-setlocal omnifunc=gocomplete#Complete
-au BufWritePre <buffer> Fmt
+
+nmap gd <Plug>(go-def)
+nmap <Leader>s <Plug>(go-def-split)
+nmap <Leader>v <Plug>(go-def-vertical)
+nmap <Leader>d <Plug>(go-doc-vertical)
