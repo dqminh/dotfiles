@@ -28,7 +28,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'benmills/vimux'
 Plugin 'scrooloose/syntastic'
 Plugin 'fatih/vim-go'
@@ -197,7 +197,7 @@ command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
 
 " Kill buffer
-nnoremap K :BD<cr>
+nnoremap K :bw<cr>
 
 " Unfuck my screen
 nnoremap U :syntax sync fromstart<cr>:redraw!<cr>
