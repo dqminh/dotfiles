@@ -41,6 +41,7 @@ Plugin 'nono/vim-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'klen/python-mode'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'w0ng/vim-hybrid'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -155,7 +156,8 @@ let g:syntastic_javascript_checkers=['jshint']
 " Theme
 set background=dark
 set synmaxcol=500 " not slow when highlight long line
-colorscheme jellybeans
+let g:hybrid_use_iTerm_colors = 1
+colorscheme hybrid
 
 " Status line
 hi statusline ctermfg=10 ctermbg=18
