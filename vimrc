@@ -10,6 +10,10 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
+
+Plugin 'danro/rename.vim'
+Plugin 'pbrisbin/vim-mkdir'
+
 Plugin 'int3/vim-extradite'
 Plugin 'thisivan/vim-bufexplorer'
 Plugin 'rking/ag.vim'
@@ -20,7 +24,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/bufkill.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
@@ -28,9 +31,9 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'benmills/vimux'
+Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
+
 Plugin 'fatih/vim-go'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-markdown'
@@ -40,6 +43,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nono/vim-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'klen/python-mode'
+
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'w0ng/vim-hybrid'
 " All of your Plugins must be added before the following line
@@ -146,10 +150,6 @@ let g:rubycomplete_rails = 1
 " Remove whitespace on save
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Vimux
-let g:VimuxHeight = 10
-let VimuxUseNearestPane = 1
-
 " Syntastic
 let g:syntastic_javascript_checkers=['jshint']
 
@@ -157,7 +157,7 @@ let g:syntastic_javascript_checkers=['jshint']
 set background=dark
 set synmaxcol=500 " not slow when highlight long line
 let g:hybrid_use_iTerm_colors = 1
-colorscheme hybrid
+colorscheme jellybeans
 
 " Status line
 hi statusline ctermfg=10 ctermbg=18
@@ -256,10 +256,6 @@ nnoremap <leader>dg :diffget<CR>
 nnoremap <leader>v V`]
 nnoremap <silent> <leader>W :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 
-" YankRing
-nnoremap <silent> <C-p> :YRShow<cr>
-inoremap <silent> <C-p> <ESC>:YRShow<cr>
-
 " CTags
 map <C-\> :tnext<CR>
 
@@ -279,10 +275,6 @@ let g:ctrlp_map = "<leader><leader>"
 " Rebuilt tags
 map <leader>asd :!ctags -R --languages=ruby,javascript<CR>
 
-" Vimux
-nnoremap <leader>qp :VimuxPromptCommand<Cr>
-nnoremap <leader>qr :VimuxRunLastCommand<Cr>
-
 "remove highlight when press enter
 nnoremap <CR> :noh<CR><CR>
 
@@ -297,6 +289,12 @@ let g:gofmt_command = "goimports"
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_max_height = 20
 
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
@@ -305,6 +303,7 @@ endif
 " FILETYPES
 "------------------------------------------------------------------------------
 
+au BufNewFile,BufRead *.txt setfiletype text
 au BufNewFile,BufRead *.txt setfiletype text
 au BufNewFile,BufRead *.json set syntax=javascript ft=javascript
 au BufNewFile,BufRead *.hbs set syntax=mustache
