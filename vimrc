@@ -43,6 +43,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nono/vim-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'klen/python-mode'
+Plugin 'wting/rust.vim'
 
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'w0ng/vim-hybrid'
