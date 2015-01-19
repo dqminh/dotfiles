@@ -13,3 +13,6 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 .jhw-cache
+
+# ignore .env files
+.env
