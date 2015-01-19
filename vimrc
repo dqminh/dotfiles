@@ -36,7 +36,7 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'fatih/vim-go'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-haml'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -44,9 +44,11 @@ Plugin 'nono/vim-handlebars'
 Plugin 'pangloss/vim-javascript'
 Plugin 'klen/python-mode'
 Plugin 'wting/rust.vim'
+Plugin 'crosbymichael/vim-cfmt'
 
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'flazz/vim-colorschemes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -157,7 +159,7 @@ let g:syntastic_javascript_checkers=['jshint']
 " Theme
 set background=dark
 set synmaxcol=500 " not slow when highlight long line
-let g:hybrid_use_iTerm_colors = 1
+set t_Co=256
 colorscheme jellybeans
 
 " Status line
@@ -284,7 +286,7 @@ nnoremap + <c-a>
 nnoremap - <c-x>
 
 " Goimport
-let g:gofmt_command = "goimports"
+let g:go_fmt_command = "goimports"
 
 " Ctrlp Settings
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
@@ -295,6 +297,9 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+
+" Cfmt
+let g:cfmt_style = '-linux'
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
@@ -312,6 +317,7 @@ au BufNewFile,BufRead *.pde set filetype=c syntax=c cindent
 au BufNewFile,BufRead *.html set textwidth=999
 au BufNewFile,BufRead {Dockerfile} setlocal wrap linebreak nolist textwidth=78 syntax=off
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+autocmd BufWritePre *.c,*.h Cfmt
 au FileType text setlocal textwidth=78
 
 " Enable omni completion.
