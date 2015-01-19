@@ -18,10 +18,7 @@
   st = status
   co = checkout
   pr = pull --rebase
-
-[apply]
-  # Detect whitespace errors when applying a patch
-  whitespace = fix
+  cs = commit -s
 
 [core]
   # Use custom `.gitignore` and `.gitattributes`
