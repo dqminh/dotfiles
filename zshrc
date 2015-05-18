@@ -30,6 +30,7 @@ export LC_ALL=en_US.UTF-8
 export GOPATH=$HOME/gocode
 export GOBIN=$HOME/gocode/bin
 export PATH=$HOME/bin:$HOME/.bin:$GOBIN:/opt/packer:/usr/local/go/bin:$PATH
+export PATH=$HOME/.bin:$PATH
 
 # tools for moving around GOPATH
 export CDPATH=$HOME/gocode/src/github.com:$HOME/gocode/src/code.google.com/p

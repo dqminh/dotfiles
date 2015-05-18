@@ -11,9 +11,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'danro/rename.vim'
-Plugin 'pbrisbin/vim-mkdir'
-
 Plugin 'int3/vim-extradite'
 Plugin 'thisivan/vim-bufexplorer'
 Plugin 'rking/ag.vim'
@@ -24,10 +21,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
@@ -46,9 +40,6 @@ Plugin 'klen/python-mode'
 Plugin 'wting/rust.vim'
 Plugin 'crosbymichael/vim-cfmt'
 
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'flazz/vim-colorschemes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -79,7 +70,10 @@ set autoread           " Set autoread when a file is changed from outside
 set history=1000       " Sets how many lines of history vim has to remember
 set so=7               " Set 7 lines to the cursor when moving vertical
 set textwidth=79       " Default maximum textwidth is 79
+
+highlight ColorColumn ctermbg=8
 set colorcolumn=80,120 " Highlight column 80 and 120 to remind us that we should open a new line
+
 set cmdheight=1        " Commandbar height
 set hid                " Change buffer without saving
 set switchbuf=useopen  " Use opened buffer instead of creating new one
@@ -160,7 +154,6 @@ let g:syntastic_javascript_checkers=['jshint']
 set background=dark
 set synmaxcol=500 " not slow when highlight long line
 set t_Co=256
-colorscheme jellybeans
 
 " Status line
 hi statusline ctermfg=10 ctermbg=18
