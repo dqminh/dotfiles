@@ -20,6 +20,15 @@
   pr = pull --rebase
   cs = commit -s
 
+  # golang codereview
+  change = codereview change
+  gofmt = codereview gofmt
+  mail = codereview mail
+  pending = codereview pending
+  submit = codereview submit
+  sync = codereview sync
+
+
 [core]
   # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore
@@ -72,3 +81,5 @@
   default = current
 [rerere]
   enabled = 1
+[http]
+	cookiefile = /Users/dqminh/.gitcookies
