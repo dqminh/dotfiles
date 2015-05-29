@@ -11,7 +11,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'int3/vim-extradite'
 Plugin 'thisivan/vim-bufexplorer'
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
@@ -26,7 +25,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
 Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
 
 Plugin 'fatih/vim-go'
 Plugin 'vim-ruby/vim-ruby'
@@ -147,9 +145,6 @@ let g:rubycomplete_rails = 1
 " Remove whitespace on save
 autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Syntastic
-let g:syntastic_javascript_checkers=['jshint']
-
 " Theme
 set background=dark
 set synmaxcol=500 " not slow when highlight long line
@@ -182,15 +177,9 @@ autocmd! bufwritepost vimrc source %
 "------------------------------------------------------------------------------
 " KEYMAPS
 "------------------------------------------------------------------------------
-map <leader>l :call RunTestFile()<CR>
-map <leader>L :call RunNearestTest()<CR>
 
 " <Leader>1: Toggle between paste mode
 nnoremap <silent> <Leader>1 :set paste!<cr>
-
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
 
 " Kill buffer
 nnoremap K :bw<cr>
@@ -229,8 +218,6 @@ nmap <leader>cn :cnext<CR>
 nmap <leader>cp :cprevious<CR>
 
 " Navigate
-map <F1> :bnext<CR>
-map <F2> :bprevious<CR>
 nmap <leader>av :AV<CR>
 nmap <leader>aa :A<CR>
 
@@ -242,7 +229,6 @@ nmap <silent><leader>nf :NERDTreeFind<CR>
 
 " Fugitive
 nnoremap <leader>gb :Gblame<CR>
-nnoremap <leader>gl :Extradite<CR>
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>dp :diffput<CR>
@@ -282,7 +268,6 @@ nnoremap - <c-x>
 let g:go_fmt_command = "goimports"
 
 " Ctrlp Settings
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_max_height = 20
 
 " Supertab
