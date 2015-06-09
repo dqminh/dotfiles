@@ -37,6 +37,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'klen/python-mode'
 Plugin 'wting/rust.vim'
 Plugin 'crosbymichael/vim-cfmt'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,8 +70,8 @@ set history=1000       " Sets how many lines of history vim has to remember
 set so=7               " Set 7 lines to the cursor when moving vertical
 set textwidth=79       " Default maximum textwidth is 79
 
-highlight ColorColumn ctermbg=8
 set colorcolumn=80,120 " Highlight column 80 and 120 to remind us that we should open a new line
+colorscheme jellybeans
 
 set cmdheight=1        " Commandbar height
 set hid                " Change buffer without saving
