@@ -28,6 +28,7 @@ export LC_ALL=en_US.UTF-8
 
 # PATHS
 export GOPATH=$HOME/gocode
+export GOROOT_BOOTSTRAP=/usr/local/go
 export GOBIN=$HOME/gocode/bin
 export PATH=$HOME/bin:$HOME/.bin:$GOBIN:/opt/packer:/usr/local/go/bin:$PATH
 export PATH=$HOME/.bin:$PATH
