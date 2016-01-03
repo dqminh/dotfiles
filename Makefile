@@ -1,4 +1,4 @@
-all: default vim apps
+all: default apps vim
 
 .PHONY: default
 default:
@@ -38,6 +38,7 @@ vim: default
 
 .PHONY: apps
 apps:
+	mkdir ~/bin
 	sudo apt-get update
 	sudo apt-get install -y \
 		go \
